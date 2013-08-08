@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/input_control
+END
+dynctrl.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_control/dynctrl.c
+END
+dynctrl.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_control/dynctrl.h
+END
+uvc_compat.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_control/uvc_compat.h
+END
+uvcvideo.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/input_control/uvcvideo.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_control/Makefile
+END
+input_uvc.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_control/input_uvc.c
+END

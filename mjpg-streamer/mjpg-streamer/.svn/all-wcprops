@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/mjpg-streamer/!svn/ver/172/mjpg-streamer
+END
+mjpg_streamer.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/mjpg-streamer/!svn/ver/160/mjpg-streamer/mjpg_streamer.c
+END
+utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/utils.c
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/mjpg-streamer/!svn/ver/3/mjpg-streamer/LICENSE
+END
+TODO
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/118/mjpg-streamer/TODO
+END
+mjpg_streamer.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/mjpg-streamer/!svn/ver/127/mjpg-streamer/mjpg_streamer.h
+END
+start.sh
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mjpg-streamer/!svn/ver/116/mjpg-streamer/start.sh
+END
+utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/utils.h
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mjpg-streamer/!svn/ver/47/mjpg-streamer/CHANGELOG
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mjpg-streamer/!svn/ver/154/mjpg-streamer/Makefile
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/107/mjpg-streamer/README
+END

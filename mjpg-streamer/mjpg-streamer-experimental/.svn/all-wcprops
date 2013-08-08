@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/mjpg-streamer/!svn/ver/181/mjpg-streamer-experimental
+END
+mjpg_streamer.c
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/mjpg_streamer.c
+END
+utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/utils.c
+END
+mjpg-streamer.config
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/mjpg-streamer.config
+END
+mjpg-streamer.includes
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/mjpg-streamer.includes
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/LICENSE
+END
+mjpg_streamer.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/mjpg_streamer.h
+END
+utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/utils.h
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/CHANGELOG
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/README
+END
+TODO
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/TODO
+END
+start.sh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/start.sh
+END
+README-UNSTABLE
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/README-UNSTABLE
+END
+mjpg-streamer.creator
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/mjpg-streamer.creator
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/Makefile
+END
+mjpg-streamer.files
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/mjpg-streamer.files
+END

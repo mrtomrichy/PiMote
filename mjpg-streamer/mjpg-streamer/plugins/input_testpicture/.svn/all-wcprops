@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mjpg-streamer/!svn/ver/147/mjpg-streamer/plugins/input_testpicture
+END
+testpictures.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/132/mjpg-streamer/plugins/input_testpicture/testpictures.h
+END
+input_testpicture.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/mjpg-streamer/!svn/ver/147/mjpg-streamer/plugins/input_testpicture/input_testpicture.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mjpg-streamer/!svn/ver/61/mjpg-streamer/plugins/input_testpicture/Makefile
+END

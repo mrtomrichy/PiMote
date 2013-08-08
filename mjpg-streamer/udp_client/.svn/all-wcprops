@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client
+END
+mainwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client/mainwindow.h
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client/main.cpp
+END
+udp_client.pro
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client/udp_client.pro
+END
+mainwindow.ui
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client/mainwindow.ui
+END
+mainwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/mjpg-streamer/!svn/ver/101/udp_client/mainwindow.cpp
+END

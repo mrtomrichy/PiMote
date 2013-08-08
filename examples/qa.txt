@@ -1,0 +1,40 @@
+Q: What is Africa?
+A: Country
+B: Continent
+C: Bread
+B
+Q: What year is it?
+A: 2013
+B: 213
+C: 2004
+A
+Q: What color is a seal?
+A: Pink
+B: Grey
+C: Yellow
+B
+Q: Where is Paris?
+A: USA
+B: Japan
+C: France
+C
+Q: What is a beetle?
+A: An insect
+B: A flower
+C: A moon
+A
+Q: How many centimeters in 1 metre?
+A: 10
+B: 1000
+C: 100
+C
+Q: 9 X 6 = ?
+A: 54
+B: 98
+C: 52
+A
+Q: Where do penguins live?
+A: On Mars
+B: Isreal
+C: Antarctic
+C

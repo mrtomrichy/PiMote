@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/mjpg-streamer/!svn/ver/78/mjpg-streamer/plugins/output_file/examples
+END
+ftp_upload.sh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mjpg-streamer/!svn/ver/78/mjpg-streamer/plugins/output_file/examples/ftp_upload.sh
+END
+show_filename.sh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/78/mjpg-streamer/plugins/output_file/examples/show_filename.sh
+END
+change_filename.sh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/mjpg-streamer/!svn/ver/78/mjpg-streamer/plugins/output_file/examples/change_filename.sh
+END

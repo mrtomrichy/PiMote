@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer
+END
+utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/utils.c
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/LICENSE
+END
+v4l2uvc.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/v4l2uvc.c
+END
+uvc_compat.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/uvc_compat.h
+END
+utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/utils.h
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/CHANGELOG
+END
+uvc_stream.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/uvc_stream.c
+END
+v4l2uvc.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/v4l2uvc.h
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/README
+END
+color.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/color.c
+END
+control.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/control.c
+END
+color.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/color.h
+END
+control.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/control.h
+END
+uvcvideo.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/uvcvideo.h
+END
+huffman.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/huffman.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/mjpg-streamer/!svn/ver/2/uvc-streamer/Makefile
+END

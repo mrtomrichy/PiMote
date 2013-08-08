@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/mjpg-streamer/!svn/ver/180/mjpg-streamer-experimental/plugins/input_uvc
+END
+dynctrl.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/179/mjpg-streamer-experimental/plugins/input_uvc/dynctrl.c
+END
+dynctrl-logitech.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/mjpg-streamer/!svn/ver/179/mjpg-streamer-experimental/plugins/input_uvc/dynctrl-logitech.h
+END
+dynctrl.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/plugins/input_uvc/dynctrl.h
+END
+jpeg_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mjpg-streamer/!svn/ver/179/mjpg-streamer-experimental/plugins/input_uvc/jpeg_utils.c
+END
+v4l2uvc.c
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/179/mjpg-streamer-experimental/plugins/input_uvc/v4l2uvc.c
+END
+huffman.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_uvc/huffman.h
+END
+uvcvideo.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/input_uvc/uvcvideo.h
+END
+jpeg_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mjpg-streamer/!svn/ver/179/mjpg-streamer-experimental/plugins/input_uvc/jpeg_utils.h
+END
+v4l2uvc.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/161/mjpg-streamer-experimental/plugins/input_uvc/v4l2uvc.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/mjpg-streamer/!svn/ver/180/mjpg-streamer-experimental/plugins/input_uvc/Makefile
+END
+input_uvc.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/mjpg-streamer/!svn/ver/173/mjpg-streamer-experimental/plugins/input_uvc/input_uvc.c
+END

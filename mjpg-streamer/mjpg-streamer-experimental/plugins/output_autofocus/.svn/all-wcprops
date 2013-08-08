@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/output_autofocus
+END
+processJPEG_onlyCenter.c
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/output_autofocus/processJPEG_onlyCenter.c
+END
+output_autofocus.c
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/output_autofocus/output_autofocus.c
+END
+processJPEG_onlyCenter.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/output_autofocus/processJPEG_onlyCenter.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/output_autofocus/Makefile
+END

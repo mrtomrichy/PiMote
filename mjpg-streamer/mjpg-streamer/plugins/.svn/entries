@@ -1,0 +1,129 @@
+10
+
+dir
+181
+https://mjpg-streamer.svn.sourceforge.net/svnroot/mjpg-streamer/mjpg-streamer/plugins
+https://mjpg-streamer.svn.sourceforge.net/svnroot/mjpg-streamer
+
+
+
+2012-12-23T17:19:45.759544Z
+172
+martonmiklos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a8dad676-403b-0410-b964-c43bdf40fe89
+
+input_control
+dir
+
+output_file
+dir
+
+output_http
+dir
+
+output_viewer
+dir
+
+input_gspcav1
+dir
+
+input.h
+file
+
+
+
+
+2013-06-19T11:05:51.000000Z
+6be341d9a5889ce94b20c43ef5e5be4e
+2010-11-09T23:58:30.903870Z
+127
+martonmiklos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3422
+
+output.h
+file
+
+
+
+
+2013-06-19T11:05:51.000000Z
+5bd49739f72856f0b9c439f12d484a35
+2010-11-09T23:58:30.903870Z
+127
+martonmiklos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2645
+
+output_autofocus
+dir
+
+output_rtsp
+dir
+
+output_udp
+dir
+
+input_testpicture
+dir
+
+input_uvc
+dir
+
+input_file
+dir
+

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture
+END
+input_testpicture.includes
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/input_testpicture.includes
+END
+testpictures.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/testpictures.h
+END
+input_testpicture.creator
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/input_testpicture.creator
+END
+input_testpicture.c
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/input_testpicture.c
+END
+input_testpicture.files
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/input_testpicture.files
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/mjpg-streamer/!svn/ver/128/mjpg-streamer-experimental/plugins/input_testpicture/Makefile
+END
+input_testpicture.config
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/mjpg-streamer/!svn/ver/171/mjpg-streamer-experimental/plugins/input_testpicture/input_testpicture.config
+END

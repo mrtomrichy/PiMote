@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/input_http
+END
+input_http.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/155/mjpg-streamer-experimental/plugins/input_http/input_http.c
+END
+misc.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/mjpg-streamer/!svn/ver/150/mjpg-streamer-experimental/plugins/input_http/misc.h
+END
+mjpg-proxy.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/150/mjpg-streamer-experimental/plugins/input_http/mjpg-proxy.h
+END
+version.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mjpg-streamer/!svn/ver/149/mjpg-streamer-experimental/plugins/input_http/version.h
+END
+misc.c
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/mjpg-streamer/!svn/ver/150/mjpg-streamer-experimental/plugins/input_http/misc.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mjpg-streamer/!svn/ver/150/mjpg-streamer-experimental/plugins/input_http/Makefile
+END
+mjpg-proxy.c
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mjpg-streamer/!svn/ver/150/mjpg-streamer-experimental/plugins/input_http/mjpg-proxy.c
+END

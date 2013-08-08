@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/mjpg-streamer/!svn/ver/127/mjpg-streamer/plugins/input_gspcav1
+END
+utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/utils.c
+END
+utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/utils.h
+END
+spcaframe.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/spcaframe.h
+END
+spcav4l.c
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/spcav4l.c
+END
+encoder.c
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/encoder.c
+END
+spcav4l.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/spcav4l.h
+END
+marker.c
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/marker.c
+END
+input_gspcav1.c
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/mjpg-streamer/!svn/ver/127/mjpg-streamer/plugins/input_gspcav1/input_gspcav1.c
+END
+jconfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/jconfig.h
+END
+huffman.c
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/huffman.c
+END
+encoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/encoder.h
+END
+marker.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/marker.h
+END
+quant.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/quant.c
+END
+readme.spcacat
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/mjpg-streamer/!svn/ver/55/mjpg-streamer/plugins/input_gspcav1/readme.spcacat
+END
+huffman.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/huffman.h
+END
+jdatatype.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/mjpg-streamer/!svn/ver/55/mjpg-streamer/plugins/input_gspcav1/jdatatype.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/mjpg-streamer/!svn/ver/127/mjpg-streamer/plugins/input_gspcav1/Makefile
+END
+quant.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/mjpg-streamer/!svn/ver/117/mjpg-streamer/plugins/input_gspcav1/quant.h
+END
