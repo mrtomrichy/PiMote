@@ -21,6 +21,8 @@ How to install
 
 PiMote allows you to easily use your Android phone as a remote control for your programs on your Raspberry Pi. By running a server on the Pi, your phone can connect over a local WiFi network to the Raspberry Pi to remotely trigger events and display information. Check the documentation and examples for any ideas, and feel free to contact us if you have any questions.
 
+For video streaming, install: https://github.com/codewithpassion/mjpg-streamer
+
 
 API Documentation - https://docs.google.com/a/ajrmail.co.uk/document/d/1WgJT5AwKpGRbcP-Borukpo133kLKAV2wvFC3OYhCLmA
 
