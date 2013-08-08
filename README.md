@@ -6,14 +6,16 @@ Still to come: Grid Layout, More sensor readings, Images, Landscape/Portrait opt
 
 
 NOTE:
+
 ACCELEROMETER IS STILL EXPERIMENTAL
+
 NOT MUCH VALIDATION ADDED YET SO THERE ARE LOTS OF POTENTIAL ERRORS
 
 
 How to install
 
-    git clone https://www.github.com/radujipa/raspberrypi
-    cd raspberrypi/PiMote
+    git clone https://www.github.com/mrtomrichy/PiMote
+    cd PiMote
     sudo python setup.py install
 
 
