@@ -4,12 +4,11 @@
 from pimoteutils import *
 import sys
 
-''' ########################-------SERVER-------############################
-	This is the main server that runs on the pi. All messages are sorted here and sent
-	to the phone that handles them.
-	It also initialises and manages the security. '''
 
 class PhoneServer(PiMoteServer):
+	''' This is the main server that runs on the pi. 
+	All messages are sorted here and sent to the phone that handles them.
+	It also initialises and manages the security. '''
 
 	def addPhone(self, thephone): 
 		''' Store the phone object for reference '''
@@ -51,17 +50,17 @@ class Phone():
 		Also contains an array which contains all components (ordered) to be shown on the phone.
 		The user treats this as a phone and specifies what they would like displayed on it.
 	'''
-	name = "PiMote"                                         #Default app name
+	name = "PiMote"                                         	#Default app name
 
-	components = []                                         #All components to be displayed on the phone
+	components = []                                         	#All components to be displayed on the phone
 
-	controltype = 0                                         #Type of phone
+	controltype = 0                                        		#Type of phone
 
 	orientation = 0
 	ORIENTATION_PORTRAIT = 0
 	ORIENTATION_LANDSCAPE = 1
 
-	sensorvalue = 0                                         #Accellerometer. 0 = off, 1 = normal, 2 = game, 3 = slow
+	sensorvalue = 0                                         	#Accellerometer. 0 = off, 1 = normal, 2 = game, 3 = slow
 	SENSOR_OFF = 0
 	SENSOR_NORMAL = 1
 	SENSOR_GAME = 2
@@ -72,28 +71,47 @@ class Phone():
 
 	#More protocol variables for component setup
 	CLEAR_ALL      = 0
-	INPUT_REGULAR  = 1                                       #Specify regular input (Button)
+	INPUT_REGULAR  = 1                                       	#Specify regular input (Button)
 	INPUT_TEXT     = 2                                          #Specify an InputText (Editable)
-	INPUT_TOGGLE   = 3                                        #Specify a Toggle Button (ToggleButton)
-	OUTPUT_TEXT    = 4                                         #Specify an OutputText (TextView)
+	INPUT_TOGGLE   = 3                                        	#Specify a Toggle Button (ToggleButton)
+	OUTPUT_TEXT    = 4                                        	#Specify an OutputText (TextView)
 	VIDEO_FEED     = 5                                          #Specify a VideoFeed (MjpgView)
-	VOICE_INPUT    = 6                                         #Specify a VoiceInput (Google Voice Recognition button)
-	RECURRING_INFO = 7                                      #Specify a recurring poll from phone to pi
-	PROGRESS_BAR   = 8                                        #Specify a ProgressBar (ProgressBar)
-	SPACER         = 9                                              #Specify a Spacer (blank View with specified height)
+	VOICE_INPUT    = 6                                          #Specify a VoiceInput (Google Voice Recognition button)
+	RECURRING_INFO = 7                                      	#Specify a recurring poll from phone to pi
+	PROGRESS_BAR   = 8                                        	#Specify a ProgressBar (ProgressBar)
+	SPACER         = 9                                          #Specify a Spacer (blank View with specified height)
 	#Setup
-	SET_CONTROL_TYPE = 0                                    #Set the control type
-	SETUP = 1                                               #Setup information
+	SET_CONTROL_TYPE = 0                                    	#Set the control type
+	SETUP = 1                                               	#Setup information
 	#Data being sent
-	REQUEST_OUTPUT_CHANGE = 2                               #Request a change to an output component
+	REQUEST_OUTPUT_CHANGE = 2                               	#Request a change to an output component
+
 
 	def add(self, component):
 		''' Add a component to the phone screen '''
 		if isinstance(component, Component):
-			component.id = len(self.components)
+			component.id = self.setId()
 			self.components.append(component)
 		else:
 			print("Not a Component.")
+	def setId(self):
+		''' Generates a unique client ID '''
+		id=0
+		x = 0
+		while x < len(self.components):
+			if self.components[x].id == id:
+				id+=1
+				x = 0
+			else:
+				x+=1
+		return id
+	def setView(self, layout):
+		if isinstance(layout, Layout):
+			self.components = []
+			self.components = layout.getComponents()
+			self.updateDisplay()
+		else:
+			print("Not a valid Layout")
 
 	def buttonPressed(self, id, msg, clientId):
 		''' Overridden by user so they can handle messages received from phone '''
@@ -128,10 +146,10 @@ class Phone():
 		for c in self.components:
 			if isinstance(c, ToggleButton) and c.id == id:
 				server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.REQUEST_OUTPUT_CHANGE)+","+str(Phone.INPUT_TOGGLE)+","+str(id)+","+str(message))
-			if int(message) == 1:
-				c.value = True
-			else:
-				c.value = False
+				if int(message) == 1:
+					c.value = True
+				else:
+					c.value = False
 
 	def updateSensors(self, message, clientId):
 		(x, sep, yz) = message.strip().partition(",")
@@ -139,9 +157,9 @@ class Phone():
 		(y, sep, z) = yz.strip().partition(",")
 		self.sensorY = y
 		self.sensorZ = z
-		self.sensorUpdate(float(self.sensorX), float(self.sensorY), float(self.sensorZ))
+		self.sensorUpdate(float(self.sensorX), float(self.sensorY), float(self.sensorZ), clientId)
 
-	def sensorUpdate(self, x, y, z):
+	def sensorUpdate(self, x, y, z, clientId):
 		pass
 
 	def clearComponents(self):
@@ -150,18 +168,21 @@ class Phone():
 
 	def updateDisplay(self):
 		''' Clear the display and repopulate with the components '''
-		self.server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(Phone.CLEAR_ALL))
-		for c in self.server.getClients():
-			self.setup(c, self.server)
+		try:
+			self.server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(Phone.CLEAR_ALL))
+			for c in self.server.getClients():
+				self.setup(c, self.server)
+		except:
+			pass
 
 	def setTitle(self, title):
 		''' Set the title of the application to be displayed on the phone '''
 		self.name = str(title)
 
-	def clientConnected(self, socket):
+	def clientConnected(self, clientId):
 		''' Can be overridden by the user to handle when someone connects '''
 		pass
-	def clientDisconnected(self, socket):
+	def clientDisconnected(self, clientId):
 		''' Can be overridden by the user to handle when someone disconnects '''
 		pass
 	
@@ -343,3 +364,40 @@ class Spacer(Component):
 	def setup(self, socket, server):
 		''' Send setup information for this component to the phone '''
 		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.size))
+
+
+class Layout():
+	def __init__(self):
+		self.components = []
+	def add(self, component):
+		''' Add a component to the phone screen '''
+		if isinstance(component, Component):
+			component.id = self.setId()
+			self.components.append(component)
+		else:
+			print("Not a Component.")
+	def setId(self):
+		''' Generates a unique client ID '''
+		id=0
+		x = 0
+		while x < len(self.components):
+			if self.components[x].id == id:
+				id+=1
+				x = 0
+			else:
+				x+=1
+		return id
+	def removeAllComponents(self):
+		self.components = []
+	def removeComponent(self, component):
+		if isinstance(component, Component):
+			for c in self.components:
+				if c == component:
+					self.components.remove(c)
+					return
+		elif isinstance(component, int):
+			del self.components[component]
+		else:
+			print("Please specify a Component or an index")
+	def getComponents(self):
+		return self.components

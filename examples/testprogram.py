@@ -23,10 +23,7 @@ class MyPhone(Phone):
 		#########----------------------------------------------###########
 		if id == b1.getId():
 			self.buttonPress+=1
-			self.clearComponents()
-			self.add(b4)
-			self.updateDisplay()
-			#o1.setText("<font color=#CC0000><b>Regular Button</b></font>: you have pressed it " + str(self.buttonPress) + " times")
+			o1.setText("<font color=#CC0000><b>Regular Button</b></font>: you have pressed it " + str(self.buttonPress) + " times")
 		elif id == b2.getId():
 			o2.setText("<font color=#CC0000><b>Toggle Button</b></font>: " + message)
 		elif id == b3.getId():
@@ -37,11 +34,6 @@ class MyPhone(Phone):
 			o4.setText("<font color=#CC0000><b>Progress Bar</b></font>: <b>"+str(i)+"</b>%")
 		elif id == vi.getId():
 			o5.setText("<font color=#CC0000><b>Voice Input</b></font>: '" + message + "'")
-		elif id == b4.getId():
-			print "pressed"
-			self.clearComponents()
-			setup()
-			self.updateDisplay()
 
 # Create the phone object
 thisphone = MyPhone()
@@ -66,8 +58,6 @@ v = VideoFeed(640, 480) #Live video feed
 vi = VoiceInput() #Voice input
 s = Spacer(100)
 r = RecurringInfo(2000)
-
-b4 = Button("RePopulate")
 
 def setup():
 	#Add the buttons to the phone
@@ -97,7 +87,7 @@ def setup():
 setup()
 
 #thisphone.setSensor(Phone.SENSOR_SLOW)
-thisphone.setOrientation(Phone.ORIENTATION_LANDSCAPE)
+thisphone.setOrientation(Phone.ORIENTATION_PORTRAIT)
 
 #Create the server
 myserver = PhoneServer()
