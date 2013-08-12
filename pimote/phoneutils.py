@@ -25,21 +25,29 @@ class PhoneServer(PiMoteServer):
 			if int(id) == 8827:
 				self.phone.updateSensors(msg, socket.id)
 			else:
-				self.phone.buttonPressed(int(id), msg, socket.id) 	#Allow the user to handle the message + client
+				try:
+					self.phone.buttonPressed(int(id), msg, socket.id) 	#Allow the user to handle the message + client
+				except Exception, e:
+					print("Problem in buttonPressed() override: " + str(e))
+					self.stop()
+					print("Server killed, press enter.")
 		elif isinstance(self.phone, ControllerPhone):         		#Controller
 			self.phone.controlPress(message)                   		#Controller handler
 
 	def clientConnected(self, socket):
 		''' A client has connected to the server '''
 		self.phone.setup(socket, self)                        		#Send them setup information
-		self.phone.clientConnected(socket.id)
+		try:
+			self.phone.clientConnected(socket.id)
+		except Exception, e:
+			print("Problem in clientConnected() override: " + str(e))
 
 	def clientDisconnected(self, socket):
 		''' A client has disconnected from the server '''
 		try:
 			self.phone.clientDisconnected(socket.id)
-		except:
-			pass
+		except Exception, e:
+			print("Problem in clientDisconnected() override: " + str(e))
 
 
 
@@ -365,7 +373,7 @@ class Spacer(Component):
 		''' Send setup information for this component to the phone '''
 		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.size))
 
-
+''' This can store multiple components and can then be sent for display on the phone '''
 class Layout():
 	def __init__(self):
 		self.components = []
@@ -388,8 +396,10 @@ class Layout():
 				x+=1
 		return id
 	def removeAllComponents(self):
+		''' Empty the Layout '''
 		self.components = []
 	def removeComponent(self, component):
+		''' Remove a single component ''' 
 		if isinstance(component, Component):
 			for c in self.components:
 				if c == component:
@@ -400,4 +410,5 @@ class Layout():
 		else:
 			print("Please specify a Component or an index")
 	def getComponents(self):
+		''' Returns a list of all components '''
 		return self.components

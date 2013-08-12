@@ -95,4 +95,4 @@ myserver.setPassword("helloworld")
 #Add the phone
 myserver.addPhone(thisphone)
 # Start server
-myserver.start("0.0.0.0", 8090)
+myserver.startServer("0.0.0.0", 8090)

@@ -104,4 +104,4 @@ thisphone.add(o)
 server = PhoneServer()
 server.setMaxClients(1)						# Max clients that can connect
 server.addPhone(thisphone)					# Add the phone to the server
-server.start("0.0.0.0", 8090)				# Start the server
+server.startServer("0.0.0.0", 8090)				# Start the server

@@ -60,4 +60,4 @@ myserver = PhoneServer()
 #Add the phone
 myserver.addPhone(thisphone)
 # Start server
-myserver.start(ip, port)
+myserver.startServer(ip, port)

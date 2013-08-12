@@ -8,6 +8,7 @@ Renamed and used as pimoteutils by Tom Richardson - 14/06/2013
 
 import sys
 import threading
+import thread
 import time
 import socket as socketlib
 import subprocess
@@ -130,6 +131,14 @@ class Receiver():
     
 class Server(Receiver):
 
+  def startServer(self, ip, port):
+    thread.start_new_thread(self.start, (ip, port))
+    print("Server has started")
+    while self.isRunning():
+      command = raw_input("Type q to quit.\n")
+      if command == "q":
+        self.stop()
+
   def start(self, ip, port):
     # Set up server socket
     serversocket = socketlib.socket(socketlib.AF_INET, socketlib.SOCK_STREAM)
@@ -244,7 +253,6 @@ class PiMoteServer(Server):
 
   def onStart(self):
     ''' Called when the server is started '''
-    print("Server has started")
     if self.isPassword:                                               #If password protected
       read = False
       while not read:                                                 #Loop to get the key
