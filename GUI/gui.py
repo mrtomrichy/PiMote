@@ -306,6 +306,7 @@ def generate_program():
 	global max_value
 	global max_entry
 	global orientation
+	global sensor_value
 
 	if len(components) == 0:
 		info_label.config(text="You have not populated the phone with components")
@@ -317,6 +318,10 @@ def generate_program():
 	for c in components:
 		if c[0] == 0 or c[0] == 1 or c[0] == 2 or c[0] == 3 or c[0] == 4:
 			my_program.write("\t\tif id == " + c[1] + ".getId():\n\t\t\tpass\n")
+
+	if not sensor_value == 0:
+		my_program.write("\tdef sensorUpdate(self, x, y, z, clientId):\n\t\tpass\n")
+
 	my_program.write("\nphone = MyPhone()   # The phone object\n\n")
 	for c in components:
 		if c[0] == 0:
@@ -342,6 +347,16 @@ def generate_program():
 		my_program.write("phone.setOrientation(Phone.PORTRAIT)\n")
 	else:
 		my_program.write("phone.setOrientation(Phone.LANDSCAPE)\n")
+
+	if sensor_value == 0:
+		my_program.write("phone.setSensor(Phone.SENSOR_OFF)\n")
+	elif sensor_value == 1:
+		my_program.write("phone.setSensor(Phone.SENSOR_SLOW)\n")
+	elif sensor_value == 2:
+		my_program.write("phone.setSensor(Phone.SENSOR_NORMAL)\n")
+	elif sensor_value == 3:
+		my_program.write("phone.setSensor(Phone.SENSOR_GAME)\n")
+
 	if max_value.get():
 		my_program.write("server.setMaxClients("+str(max_entry.get())+")\n")
 	if password_value.get():
@@ -374,12 +389,14 @@ def save_program():
 	global max_value
 	global max_entry
 	global orientation
+	global sensor_value
 	fileName = tkFileDialog.asksaveasfilename(parent=master, defaultextension=[".pmg"], filetypes=[("PiMote File", ".pmg")], title="Save the program as...")
 	if len(fileName ) > 0:
 		file = open(fileName, "w")
 		file.write(str(password_value.get())+","+password_entry.get()+",\n")
 		file.write(str(max_value.get())+","+max_entry.get()+",\n")
 		file.write(str(orientation)+"\n")
+		file.write(str(sensor_value)+"\n")
 		for c in components:
 			for inf in c:
 				file.write(str(inf)+",")
@@ -394,6 +411,9 @@ def open_program():
 	global max_entry
 	global orientation
 	global ori
+	global sensor_value
+	global sensor
+
 	fileName = tkFileDialog.askopenfilename(parent=master, filetypes=[("PiMote File", ".pmg")], title="Open file")
 	if len(fileName) > 0:
 		file = open(fileName, "r")
@@ -421,6 +441,8 @@ def open_program():
 			toggle_max_clients(max_value.get())
 		orientation = int(file.readline())
 		ori.set(orientation)
+		sensor_value = int(file.readline())
+		sensor.set(sensor_value)
 		c = file.readline().split(",")
 		c.remove(c[len(c)-1])
 		while len(c)!=0:
@@ -429,7 +451,7 @@ def open_program():
 			c = file.readline().split(",")
 			c.remove(c[len(c)-1])
 		file.close()
-	
+
 	print("Refreshing")
 	refresh_layout()
 
@@ -447,11 +469,16 @@ def changeOrientation(orient):
 	global orientation
 	orientation = orient
 
+def changeSensor(value):
+	global sensor_value
+	sensor_value = value
+
 
 	
 
 components = []
 orientation = 0
+sensor_value = 0
 
 menubar = tk.Menu(master)
 filemenu = tk.Menu(menubar, tearoff=0)
@@ -523,7 +550,7 @@ max_label = tk.Label(master=server_frame, text="Max Clients:").grid(row=5, colum
 max_entry = tk.Entry(master=server_frame, state="disabled")
 max_entry.grid(row=5, column=1)
 
-orient_label = tk.Label(master=server_frame, text="OrientationL").grid(row=7, column=0)
+orient_label = tk.Label(master=server_frame, text="Orientation:").grid(row=7, column=0)
 ori = tk.IntVar()
 orient_portrait = tk.Radiobutton(master=server_frame, text="     Portrait", value=0, command=lambda:changeOrientation(0), variable=ori)
 orient_portrait.grid(row=7, column=1, sticky=tk.E)
@@ -531,8 +558,19 @@ orient_landscape = tk.Radiobutton(master=server_frame, text="Landscape", value=1
 orient_landscape.grid(row=8, column=1, sticky=tk.E)
 ori.set(0)
 
+sensor_label = tk.Label(master=server_frame, text="Accelerometer poll rate:").grid(row=9, column=0)
+sensor = tk.IntVar()
+sensor_off = tk.Radiobutton(master=server_frame, text="       Off", value = 0, command=lambda:changeSensor(0), variable=sensor)
+sensor_off.grid(row=9, column=1, sticky=tk.E)
+sensor_slow = tk.Radiobutton(master=server_frame, text="     Slow", value = 1, command=lambda:changeSensor(1), variable=sensor)
+sensor_slow.grid(row=10, column=1, sticky=tk.E)
+sensor_normal = tk.Radiobutton(master=server_frame, text=" Normal", value = 2, command=lambda:changeSensor(2), variable=sensor)
+sensor_normal.grid(row=11, column=1, sticky=tk.E)
+sensor_game = tk.Radiobutton(master=server_frame, text="   Game", value = 3, command=lambda:changeSensor(3), variable=sensor)
+sensor_game.grid(row=12, column=1, sticky=tk.E)
+
 start_server = tk.Button(master=server_frame, text="Generate Program", command=generate_program)
-start_server.grid(row=10, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
+start_server.grid(row=13, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
 # stop_server = tk.Button(master, text="Stop server", state="disabled")
 # stop_server.grid(row=2, column=6, sticky=tk.N+tk.S+tk.W+tk.E)
 
