@@ -305,6 +305,7 @@ def generate_program():
 	global password_entry
 	global max_value
 	global max_entry
+	global orientation
 
 	if len(components) == 0:
 		info_label.config(text="You have not populated the phone with components")
@@ -337,11 +338,15 @@ def generate_program():
 		elif c[0] == 8:
 			my_program.write(c[1] + " = Spacer("+str(c[2])+")\nphone.add("+c[1]+")\n\n")
 
+	if orientation == 0:
+		my_program.write("phone.setOrientation(Phone.PORTRAIT)\n")
+	else:
+		my_program.write("phone.setOrientation(Phone.LANDSCAPE)\n")
 	if max_value.get():
 		my_program.write("server.setMaxClients("+str(max_entry.get())+")\n")
 	if password_value.get():
 		my_program.write("server.setPassword('"+str(password_entry.get())+"')\n")
-	my_program.write("server = PhoneServer()\nserver.addPhone(phone)\nserver.start('0.0.0.0', 8090)")
+	my_program.write("server = PhoneServer()\nserver.addPhone(phone)\nserver.startServer('0.0.0.0', 8090)")
 	proc = subprocess.Popen('pwd', stdout=subprocess.PIPE)
 	generate_text = "Generated program, saved as '"+fileName+"'.\nTo run, 'cd' into that directory and type 'python myprogram.py' into a terminal.\n"
 	generate_text += "Make sure you add your code to the 'buttonPressed()' method to handle when a button is pressed!"
@@ -368,11 +373,13 @@ def save_program():
 	global password_entry
 	global max_value
 	global max_entry
+	global orientation
 	fileName = tkFileDialog.asksaveasfilename(parent=master, defaultextension=[".pmg"], filetypes=[("PiMote File", ".pmg")], title="Save the program as...")
 	if len(fileName ) > 0:
 		file = open(fileName, "w")
 		file.write(str(password_value.get())+","+password_entry.get()+",\n")
 		file.write(str(max_value.get())+","+max_entry.get()+",\n")
+		file.write(str(orientation)+"\n")
 		for c in components:
 			for inf in c:
 				file.write(str(inf)+",")
@@ -385,6 +392,8 @@ def open_program():
 	global password_entry
 	global max_value
 	global max_entry
+	global orientation
+	global ori
 	fileName = tkFileDialog.askopenfilename(parent=master, filetypes=[("PiMote File", ".pmg")], title="Open file")
 	if len(fileName) > 0:
 		file = open(fileName, "r")
@@ -401,7 +410,7 @@ def open_program():
 			toggle_password(password_value.get())
 
 		m = file.readline().split(",")
-		print(m)
+		
 		if int(m[0]) == 1:
 			max_value.set(True)
 			toggle_max_clients(max_value.get())
@@ -410,7 +419,8 @@ def open_program():
 		else:
 			max_value.set(False)
 			toggle_max_clients(max_value.get())
-		
+		orientation = int(file.readline())
+		ori.set(orientation)
 		c = file.readline().split(",")
 		c.remove(c[len(c)-1])
 		while len(c)!=0:
@@ -419,9 +429,7 @@ def open_program():
 			c = file.readline().split(",")
 			c.remove(c[len(c)-1])
 		file.close()
-
-	for i in components:
-		print(i)
+	
 	print("Refreshing")
 	refresh_layout()
 
@@ -435,10 +443,15 @@ def fix_component(c):
 		else:
 			c[3] = False
 
+def changeOrientation(orient):
+	global orientation
+	orientation = orient
+
 
 	
 
 components = []
+orientation = 0
 
 menubar = tk.Menu(master)
 filemenu = tk.Menu(menubar, tearoff=0)
@@ -510,8 +523,16 @@ max_label = tk.Label(master=server_frame, text="Max Clients:").grid(row=5, colum
 max_entry = tk.Entry(master=server_frame, state="disabled")
 max_entry.grid(row=5, column=1)
 
+orient_label = tk.Label(master=server_frame, text="OrientationL").grid(row=7, column=0)
+ori = tk.IntVar()
+orient_portrait = tk.Radiobutton(master=server_frame, text="     Portrait", value=0, command=lambda:changeOrientation(0), variable=ori)
+orient_portrait.grid(row=7, column=1, sticky=tk.E)
+orient_landscape = tk.Radiobutton(master=server_frame, text="Landscape", value=1, command=lambda:changeOrientation(1), variable=ori)
+orient_landscape.grid(row=8, column=1, sticky=tk.E)
+ori.set(0)
+
 start_server = tk.Button(master=server_frame, text="Generate Program", command=generate_program)
-start_server.grid(row=7, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
+start_server.grid(row=10, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
 # stop_server = tk.Button(master, text="Stop server", state="disabled")
 # stop_server.grid(row=2, column=6, sticky=tk.N+tk.S+tk.W+tk.E)
 
