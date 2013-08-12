@@ -14,7 +14,7 @@ pfd = p.PiFaceDigital()
 
 class MyPhone(Phone):
 	global pfd
-	def sensorUpdate(self, x, y, z):
+	def sensorUpdate(self, x, y, z, clientId):
 		''' Called whenever there is a change in the accelerometer data
 			Accelerometer values are between -10 and 10 (ish. They pick up the acceleration due to gravity 9.81ms)
 		'''
