@@ -41,6 +41,8 @@ class PhoneServer(PiMoteServer):
 			self.phone.clientConnected(socket.id)
 		except Exception, e:
 			print("Problem in clientConnected() override: " + str(e))
+			self.stop()
+			print("Server killed, press enter.")
 
 	def clientDisconnected(self, socket):
 		''' A client has disconnected from the server '''
@@ -48,6 +50,8 @@ class PhoneServer(PiMoteServer):
 			self.phone.clientDisconnected(socket.id)
 		except Exception, e:
 			print("Problem in clientDisconnected() override: " + str(e))
+			self.stop()
+			print("Server killed, press enter.")
 
 
 
@@ -165,7 +169,12 @@ class Phone():
 		(y, sep, z) = yz.strip().partition(",")
 		self.sensorY = y
 		self.sensorZ = z
-		self.sensorUpdate(float(self.sensorX), float(self.sensorY), float(self.sensorZ), clientId)
+		try:
+			self.sensorUpdate(float(self.sensorX), float(self.sensorY), float(self.sensorZ), clientId)
+		except Exception, e:
+			print("Problem with SensorUpdate() override: " + str(e))
+			self.server.stop()
+			print("Server killed, press enter.")
 
 	def sensorUpdate(self, x, y, z, clientId):
 		pass
@@ -195,39 +204,15 @@ class Phone():
 		pass
 	
 # BROKEN
-''' ControllerPhone is an example of a custom made phone (this code) and manager (see Android code) '''
-class ControllerPhone():
+''' GridPhone is an example of a custom made phone (this code) and manager (see Android code) 
+	Creates a grid with touchable areas '''
+class GridPhone():
 	controltype = 1
-	video = False
-	voice = False
-	recurring = False
-	sleepTime = 0
-	def controlPress(self, type):
-		''' Overridden by the user to handle messages '''
-		pass
-	def setVideo(self):
-		''' Add video feed '''
-		self.video = True
-	def setVoice(self):
-		''' Add voice recognition button '''
-		self.voice = True
-	def setRecurring(self, sleepTime):
-		''' Add a recurring poll from phone to Pi '''
-		self.recurring = True
-		self.sleepTime = sleepTime
-	def sendMessage(self, message):
-		''' Send a message to the phone '''
-		self.socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+message)
-	def setup(self, socket):
+
+	def setup(self, socket, server):
 		''' Used for communication and setup with device '''
 		self.socket = socket
-		voiceV = videoV = recurringV = 0
-		if self.video == True:
-			videoV = 1
-		if self.voice == True:
-			voiceV = 1
-		if self.recurring == True:
-			recurringV = 1
+		self.server = server
 		socket.send(str(Phone.SET_CONTROL_TYPE)+","+str(self.controltype) + "," + str(videoV) + "," + str(voiceV)+","+str(recurringV)+","+str(self.sleepTime))
 
 
