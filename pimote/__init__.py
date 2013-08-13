@@ -18,8 +18,7 @@ from .pimoteutils import (
 # PhoneUtils Classes
 from .phoneutils import (
 	PhoneServer,
-	Phone,
-	ControllerPhone,	
+	Phone,	
 )
 
 # PhoneUtils Components
