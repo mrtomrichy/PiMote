@@ -237,6 +237,10 @@ def createKey():
 
 
 class PiMoteServer(Server):
+  ''' 
+  This is overridden by PhoneServer.
+  It will automatically set up the connection and handle the password and key auth
+  '''
   SENT_PASSWORD          = 0
   SENT_DATA              = 1
   PASSWORD_FAIL          = 2314
@@ -345,20 +349,25 @@ class PiMoteServer(Server):
       client.send(msg)
 
   def sendToClient(self, clientId, msg):
+    ''' Sends a message to an individual client '''
     for client in self.getClients():
       if client.id == clientId:
         client.send(msg)
 
   def messageReceived(self, message, socket):
+    ''' Override to recieve messages '''
     pass
   def clientConnected(self, socket):
+    ''' Override to handle when a client connects '''
     pass
   def clientDisconnected(self, socket):
+    ''' Override to handle when a client disconnects '''
     pass
 
 
 #Unfinished (low priority)
 class PiMoteClient(Client):
+  ''' THIS DOES NOT WORK '''
   SEND_PASSWORD = 0
   SEND_DATA = 1
   def onMessage(self, socket, message):
