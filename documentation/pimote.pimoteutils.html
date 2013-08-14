@@ -94,7 +94,7 @@ Methods inherited from <a href="pimote.pimoteutils.html#Receiver">Receiver</a>:<
 <font color="#000000" face="helvetica, arial"><a name="PiMoteClient">class <strong>PiMoteClient</strong></a>(<a href="pimote.pimoteutils.html#Client">Client</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>#Unfinished&nbsp;(low&nbsp;priority)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>THIS&nbsp;DOES&nbsp;NOT&nbsp;WORK<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="pimote.pimoteutils.html#PiMoteClient">PiMoteClient</a></dd>
@@ -149,7 +149,10 @@ Methods inherited from <a href="pimote.pimoteutils.html#Receiver">Receiver</a>:<
 <td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="PiMoteServer">class <strong>PiMoteServer</strong></a>(<a href="pimote.pimoteutils.html#Server">Server</a>)</font></td></tr>
     
-<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;is&nbsp;overridden&nbsp;by&nbsp;PhoneServer.<br>
+It&nbsp;will&nbsp;automatically&nbsp;set&nbsp;up&nbsp;the&nbsp;connection&nbsp;and&nbsp;handle&nbsp;the&nbsp;password&nbsp;and&nbsp;key&nbsp;auth<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="pimote.pimoteutils.html#PiMoteServer">PiMoteServer</a></dd>
 <dd><a href="pimote.pimoteutils.html#Server">Server</a></dd>
@@ -157,15 +160,15 @@ Methods inherited from <a href="pimote.pimoteutils.html#Receiver">Receiver</a>:<
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="PiMoteServer-clientConnected"><strong>clientConnected</strong></a>(self, socket)</dt></dl>
+<dl><dt><a name="PiMoteServer-clientConnected"><strong>clientConnected</strong></a>(self, socket)</dt><dd><tt>Override&nbsp;to&nbsp;handle&nbsp;when&nbsp;a&nbsp;client&nbsp;connects</tt></dd></dl>
 
-<dl><dt><a name="PiMoteServer-clientDisconnected"><strong>clientDisconnected</strong></a>(self, socket)</dt></dl>
+<dl><dt><a name="PiMoteServer-clientDisconnected"><strong>clientDisconnected</strong></a>(self, socket)</dt><dd><tt>Override&nbsp;to&nbsp;handle&nbsp;when&nbsp;a&nbsp;client&nbsp;disconnects</tt></dd></dl>
 
 <dl><dt><a name="PiMoteServer-getClients"><strong>getClients</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="PiMoteServer-managePassword"><strong>managePassword</strong></a>(self, password, socket)</dt><dd><tt>Handle&nbsp;the&nbsp;password&nbsp;received&nbsp;from&nbsp;the&nbsp;phone</tt></dd></dl>
 
-<dl><dt><a name="PiMoteServer-messageReceived"><strong>messageReceived</strong></a>(self, message, socket)</dt></dl>
+<dl><dt><a name="PiMoteServer-messageReceived"><strong>messageReceived</strong></a>(self, message, socket)</dt><dd><tt>Override&nbsp;to&nbsp;recieve&nbsp;messages</tt></dd></dl>
 
 <dl><dt><a name="PiMoteServer-onConnect"><strong>onConnect</strong></a>(self, socket)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;phone&nbsp;connects&nbsp;to&nbsp;the&nbsp;server</tt></dd></dl>
 
@@ -177,7 +180,7 @@ Methods defined here:<br>
 
 <dl><dt><a name="PiMoteServer-send"><strong>send</strong></a>(self, msg)</dt><dd><tt>Used&nbsp;to&nbsp;send&nbsp;a&nbsp;message&nbsp;to&nbsp;all&nbsp;connected&nbsp;clients</tt></dd></dl>
 
-<dl><dt><a name="PiMoteServer-sendToClient"><strong>sendToClient</strong></a>(self, clientId, msg)</dt></dl>
+<dl><dt><a name="PiMoteServer-sendToClient"><strong>sendToClient</strong></a>(self, clientId, msg)</dt><dd><tt>Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;an&nbsp;individual&nbsp;client</tt></dd></dl>
 
 <dl><dt><a name="PiMoteServer-setId"><strong>setId</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;unique&nbsp;client&nbsp;ID</tt></dd></dl>
 
