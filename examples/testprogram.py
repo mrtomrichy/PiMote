@@ -35,6 +35,9 @@ class MyPhone(Phone):
 		elif id == vi.getId():
 			o5.setText("<font color=#CC0000><b>Voice Input</b></font>: '" + message + "'")
 
+	def sensorUpdate(self, x, y, z, clientId):
+		print(str(x)+", "+str(y)+", "+str(z)+", "+str(clientId))
+
 # Create the phone object
 thisphone = MyPhone()
 thisphone.setTitle("Example PiMote App")
@@ -83,7 +86,7 @@ thisphone.add(vi)
 #thisphone.add(o7)
 #thisphone.add(v)
 
-#thisphone.setSensor(Phone.SENSOR_SLOW)
+thisphone.setSensor(Phone.SENSOR_SLOW)
 thisphone.setOrientation(Phone.ORIENTATION_PORTRAIT)
 
 #Create the server

@@ -1,7 +1,7 @@
 """
 
 ex3.py - Module for ex3 - David Thorne / AIG / 15-01-2009 
-Renamed and used as pimoteutils by Tom Richardson - 14/06/2013 
+Renamed, edited and used as pimoteutils by Tom Richardson - 14/06/2013 
 
 
 """
@@ -219,6 +219,8 @@ class Client(Receiver):
     self.stop()
 
 
+# The following was added by Tom Richardson - 02/07/2013
+
 def generator(size, chars):
   return ''.join(random.choice(chars) for x in range(size))
 
@@ -233,8 +235,6 @@ def createKey():
   file = open('privatekey.data', 'w')
   file.write(privateKey)
 
-
-# Added by Tom Richardson - 02/07/2013
 
 class PiMoteServer(Server):
   SENT_PASSWORD          = 0

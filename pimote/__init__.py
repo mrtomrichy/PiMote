@@ -12,13 +12,13 @@ from .pimoteutils import (
 	Socket,
 	Receiver,
 	Server,
-	Client,
+	Client
 )
 
 # PhoneUtils Classes
 from .phoneutils import (
 	PhoneServer,
-	Phone,	
+	Phone
 )
 
 # PhoneUtils Components

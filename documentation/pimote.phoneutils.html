@@ -1,0 +1,582 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pimote.phoneutils</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="pimote.html"><font color="#ffffff">pimote</font></a>.phoneutils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/Tom/Documents/PiMote/pimote/phoneutils.py">/Users/Tom/Documents/PiMote/pimote/phoneutils.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;&nbsp;&nbsp;PhoneUtils&nbsp;-&nbsp;Author:&nbsp;Tom&nbsp;Richardson,&nbsp;Radu&nbsp;Jipa&nbsp;2013<br>
+#&nbsp;&nbsp;&nbsp;For&nbsp;use&nbsp;with&nbsp;PiMote&nbsp;and&nbsp;pimoteutils</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+<a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+<a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="thread.html">thread</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+<a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Component">Component</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Button">Button</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#InputText">InputText</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#RecurringInfo">RecurringInfo</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#ToggleButton">ToggleButton</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#VoiceInput">VoiceInput</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#OutputText">OutputText</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#ProgressBar">ProgressBar</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Spacer">Spacer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#VideoFeed">VideoFeed</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#GridPhone">GridPhone</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Layout">Layout</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Phone">Phone</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a>(<a href="pimote.pimoteutils.html#Server">pimote.pimoteutils.Server</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#PhoneServer">PhoneServer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Button">class <strong>Button</strong></a>(<a href="pimote.phoneutils.html#Component">Component</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Button">Button</a>&nbsp;class:&nbsp;a&nbsp;simple&nbsp;input.&nbsp;Regular&nbsp;button&nbsp;that&nbsp;can&nbsp;be&nbsp;pressed<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Button-__init__"><strong>__init__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Button-getName"><strong>getName</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="Button-getType"><strong>getType</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="Button-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;<a href="#Button">Button</a>&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="Button-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="Button-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Component">class <strong>Component</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;object&nbsp;of&nbsp;type&nbsp;<a href="#Component">Component</a>&nbsp;can&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;phone&nbsp;screen<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Component-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="Component-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+<dl><dt><a name="Component-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;the&nbsp;setup&nbsp;information&nbsp;to&nbsp;the&nbsp;phone.&nbsp;<br>
+Also&nbsp;used&nbsp;to&nbsp;store&nbsp;the&nbsp;server&nbsp;and&nbsp;socket&nbsp;variables</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GridPhone">class <strong>GridPhone</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GridPhone">GridPhone</a>&nbsp;is&nbsp;an&nbsp;example&nbsp;of&nbsp;a&nbsp;custom&nbsp;made&nbsp;phone&nbsp;(this&nbsp;code)&nbsp;and&nbsp;manager&nbsp;(see&nbsp;Android&nbsp;code)&nbsp;<br>
+Creates&nbsp;a&nbsp;grid&nbsp;with&nbsp;touchable&nbsp;areas.<br>
+Not&nbsp;working&nbsp;yet.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GridPhone-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Used&nbsp;for&nbsp;communication&nbsp;and&nbsp;setup&nbsp;with&nbsp;device</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>controltype</strong> = 1</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InputText">class <strong>InputText</strong></a>(<a href="pimote.phoneutils.html#Button">Button</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Allows&nbsp;the&nbsp;user&nbsp;to&nbsp;input&nbsp;some&nbsp;text&nbsp;and&nbsp;send&nbsp;it&nbsp;back&nbsp;to&nbsp;the&nbsp;pi<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#InputText">InputText</a></dd>
+<dd><a href="pimote.phoneutils.html#Button">Button</a></dd>
+<dd><a href="pimote.phoneutils.html#Component">Component</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="InputText-__init__"><strong>__init__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="InputText-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;<a href="#Button">Button</a>&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Button">Button</a>:<br>
+<dl><dt><a name="InputText-getName"><strong>getName</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="InputText-getType"><strong>getType</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="InputText-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="InputText-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Layout">class <strong>Layout</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;can&nbsp;store&nbsp;multiple&nbsp;components&nbsp;and&nbsp;can&nbsp;then&nbsp;be&nbsp;sent&nbsp;for&nbsp;display&nbsp;on&nbsp;the&nbsp;phone<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Layout-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Layout-add"><strong>add</strong></a>(self, component)</dt><dd><tt>Add&nbsp;a&nbsp;component&nbsp;to&nbsp;the&nbsp;phone&nbsp;screen</tt></dd></dl>
+
+<dl><dt><a name="Layout-getComponents"><strong>getComponents</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;components</tt></dd></dl>
+
+<dl><dt><a name="Layout-removeAllComponents"><strong>removeAllComponents</strong></a>(self)</dt><dd><tt>Empty&nbsp;the&nbsp;<a href="#Layout">Layout</a></tt></dd></dl>
+
+<dl><dt><a name="Layout-removeComponent"><strong>removeComponent</strong></a>(self, component)</dt><dd><tt>Remove&nbsp;a&nbsp;single&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="Layout-setId"><strong>setId</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;unique&nbsp;client&nbsp;ID</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="OutputText">class <strong>OutputText</strong></a>(<a href="pimote.phoneutils.html#Component">Component</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;simple&nbsp;TextView&nbsp;where&nbsp;text&nbsp;can&nbsp;be&nbsp;output.&nbsp;Accepts&nbsp;HTML&nbsp;markup<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="OutputText-__init__"><strong>__init__</strong></a>(self, initialmessage)</dt></dl>
+
+<dl><dt><a name="OutputText-getText"><strong>getText</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;current&nbsp;text&nbsp;being&nbsp;displayed</tt></dd></dl>
+
+<dl><dt><a name="OutputText-setText"><strong>setText</strong></a>(self, message)</dt><dd><tt>Change&nbsp;the&nbsp;text&nbsp;displayed&nbsp;on&nbsp;the&nbsp;TextView</tt></dd></dl>
+
+<dl><dt><a name="OutputText-setTextSize"><strong>setTextSize</strong></a>(self, size)</dt></dl>
+
+<dl><dt><a name="OutputText-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;Output&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>message</strong> = ''</dl>
+
+<dl><dt><strong>textSize</strong> = 16</dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="OutputText-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="OutputText-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Phone">class <strong>Phone</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Phone">Phone</a>&nbsp;class&nbsp;holds&nbsp;all&nbsp;variables&nbsp;for&nbsp;phone&nbsp;protocols&nbsp;(does&nbsp;not&nbsp;unclude&nbsp;connection&nbsp;setup)<br>
+Also&nbsp;contains&nbsp;an&nbsp;array&nbsp;which&nbsp;contains&nbsp;all&nbsp;components&nbsp;(ordered)&nbsp;to&nbsp;be&nbsp;shown&nbsp;on&nbsp;the&nbsp;connected&nbsp;phones.<br>
+The&nbsp;user&nbsp;treats&nbsp;this&nbsp;as&nbsp;a&nbsp;phone&nbsp;and&nbsp;specifies&nbsp;what&nbsp;they&nbsp;would&nbsp;like&nbsp;displayed&nbsp;on&nbsp;it.<br>
+You&nbsp;can&nbsp;add&nbsp;components&nbsp;directly,&nbsp;or&nbsp;through&nbsp;adding&nbsp;a&nbsp;<a href="#Layout">Layout</a>.&nbsp;Both&nbsp;work&nbsp;in&nbsp;the&nbsp;same&nbsp;way.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Phone-add"><strong>add</strong></a>(self, component)</dt><dd><tt>Add&nbsp;a&nbsp;component&nbsp;to&nbsp;the&nbsp;phone&nbsp;screen</tt></dd></dl>
+
+<dl><dt><a name="Phone-buttonPressed"><strong>buttonPressed</strong></a>(self, id, msg, clientId)</dt><dd><tt>Override&nbsp;this&nbsp;to&nbsp;handle&nbsp;the&nbsp;button&nbsp;presses.&nbsp;<br>
+ID&nbsp;-&nbsp;ID&nbsp;of&nbsp;the&nbsp;component&nbsp;that&nbsp;sent&nbsp;the&nbsp;message.<br>
+msg&nbsp;-&nbsp;The&nbsp;message&nbsp;that&nbsp;was&nbsp;sent&nbsp;by&nbsp;that&nbsp;component.<br>
+clientId&nbsp;-&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;phone&nbsp;which&nbsp;sent&nbsp;the&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Phone-clearComponents"><strong>clearComponents</strong></a>(self)</dt><dd><tt>Clear&nbsp;all&nbsp;the&nbsp;components&nbsp;from&nbsp;the&nbsp;components&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="Phone-clientConnected"><strong>clientConnected</strong></a>(self, clientId)</dt><dd><tt>Override&nbsp;to&nbsp;handle&nbsp;when&nbsp;someone&nbsp;connects</tt></dd></dl>
+
+<dl><dt><a name="Phone-clientDisconnected"><strong>clientDisconnected</strong></a>(self, clientId)</dt><dd><tt>Override&nbsp;to&nbsp;handle&nbsp;when&nbsp;someone&nbsp;disconnects</tt></dd></dl>
+
+<dl><dt><a name="Phone-getSensorValues"><strong>getSensorValues</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;current&nbsp;values&nbsp;of&nbsp;the&nbsp;accelerometer</tt></dd></dl>
+
+<dl><dt><a name="Phone-sensorUpdate"><strong>sensorUpdate</strong></a>(self, x, y, z, clientId)</dt><dd><tt>Override&nbsp;this&nbsp;to&nbsp;handle&nbsp;changes&nbsp;in&nbsp;accelerometer&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Phone-setId"><strong>setId</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;unique&nbsp;component&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="Phone-setOrientation"><strong>setOrientation</strong></a>(self, value)</dt><dd><tt>Set&nbsp;the&nbsp;orientation&nbsp;of&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<dl><dt><a name="Phone-setSensor"><strong>setSensor</strong></a>(self, value)</dt><dd><tt>Turns&nbsp;the&nbsp;sensor&nbsp;on&nbsp;or&nbsp;off,&nbsp;and&nbsp;sets&nbsp;the&nbsp;speed&nbsp;it&nbsp;sends&nbsp;messages&nbsp;at</tt></dd></dl>
+
+<dl><dt><a name="Phone-setTitle"><strong>setTitle</strong></a>(self, title)</dt><dd><tt>Set&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;application&nbsp;to&nbsp;be&nbsp;displayed&nbsp;on&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<dl><dt><a name="Phone-setView"><strong>setView</strong></a>(self, layout)</dt><dd><tt>The&nbsp;phone&nbsp;will&nbsp;output&nbsp;the&nbsp;components&nbsp;from&nbsp;the&nbsp;passed&nbsp;in&nbsp;<a href="#Layout">Layout</a></tt></dd></dl>
+
+<dl><dt><a name="Phone-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Sends&nbsp;all&nbsp;setup&nbsp;information&nbsp;to&nbsp;the&nbsp;phone&nbsp;from&nbsp;each&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="Phone-updateButtons"><strong>updateButtons</strong></a>(self, id, message, server)</dt><dd><tt>Updates&nbsp;button&nbsp;state&nbsp;if&nbsp;necessary&nbsp;and&nbsp;sends&nbsp;to&nbsp;all&nbsp;phones</tt></dd></dl>
+
+<dl><dt><a name="Phone-updateDisplay"><strong>updateDisplay</strong></a>(self)</dt><dd><tt>Clear&nbsp;the&nbsp;display&nbsp;and&nbsp;repopulate&nbsp;with&nbsp;components[]</tt></dd></dl>
+
+<dl><dt><a name="Phone-updateSensors"><strong>updateSensors</strong></a>(self, message, clientId)</dt><dd><tt>Updates&nbsp;the&nbsp;sensor&nbsp;variables&nbsp;and&nbsp;calls&nbsp;the&nbsp;<a href="#Phone-sensorUpdate">sensorUpdate</a>()&nbsp;method</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CLEAR_ALL</strong> = 0</dl>
+
+<dl><dt><strong>INPUT_REGULAR</strong> = 1</dl>
+
+<dl><dt><strong>INPUT_TEXT</strong> = 2</dl>
+
+<dl><dt><strong>INPUT_TOGGLE</strong> = 3</dl>
+
+<dl><dt><strong>ORIENTATION_LANDSCAPE</strong> = 1</dl>
+
+<dl><dt><strong>ORIENTATION_PORTRAIT</strong> = 0</dl>
+
+<dl><dt><strong>OUTPUT_TEXT</strong> = 4</dl>
+
+<dl><dt><strong>PROGRESS_BAR</strong> = 8</dl>
+
+<dl><dt><strong>RECURRING_INFO</strong> = 7</dl>
+
+<dl><dt><strong>REQUEST_OUTPUT_CHANGE</strong> = 2</dl>
+
+<dl><dt><strong>SENSOR_GAME</strong> = 2</dl>
+
+<dl><dt><strong>SENSOR_NORMAL</strong> = 1</dl>
+
+<dl><dt><strong>SENSOR_OFF</strong> = 0</dl>
+
+<dl><dt><strong>SENSOR_SLOW</strong> = 3</dl>
+
+<dl><dt><strong>SETUP</strong> = 1</dl>
+
+<dl><dt><strong>SET_CONTROL_TYPE</strong> = 0</dl>
+
+<dl><dt><strong>SPACER</strong> = 9</dl>
+
+<dl><dt><strong>VIDEO_FEED</strong> = 5</dl>
+
+<dl><dt><strong>VOICE_INPUT</strong> = 6</dl>
+
+<dl><dt><strong>components</strong> = []</dl>
+
+<dl><dt><strong>controltype</strong> = 0</dl>
+
+<dl><dt><strong>name</strong> = 'PiMote'</dl>
+
+<dl><dt><strong>orientation</strong> = 0</dl>
+
+<dl><dt><strong>sensorX</strong> = 0</dl>
+
+<dl><dt><strong>sensorY</strong> = 0</dl>
+
+<dl><dt><strong>sensorZ</strong> = 0</dl>
+
+<dl><dt><strong>sensorvalue</strong> = 0</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PhoneServer">class <strong>PhoneServer</strong></a>(<a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;is&nbsp;the&nbsp;main&nbsp;server&nbsp;that&nbsp;runs&nbsp;on&nbsp;the&nbsp;pi.&nbsp;<br>
+All&nbsp;messages&nbsp;are&nbsp;sorted&nbsp;here&nbsp;and&nbsp;sent&nbsp;to&nbsp;the&nbsp;phone&nbsp;that&nbsp;handles&nbsp;them.<br>
+It&nbsp;also&nbsp;initialises&nbsp;and&nbsp;manages&nbsp;the&nbsp;security.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#PhoneServer">PhoneServer</a></dd>
+<dd><a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a></dd>
+<dd><a href="pimote.pimoteutils.html#Server">pimote.pimoteutils.Server</a></dd>
+<dd><a href="pimote.pimoteutils.html#Receiver">pimote.pimoteutils.Receiver</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PhoneServer-addPhone"><strong>addPhone</strong></a>(self, thephone)</dt><dd><tt>Store&nbsp;the&nbsp;phone&nbsp;object&nbsp;for&nbsp;reference</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-clientConnected"><strong>clientConnected</strong></a>(self, socket)</dt><dd><tt>A&nbsp;client&nbsp;has&nbsp;connected&nbsp;to&nbsp;the&nbsp;server&nbsp;on&nbsp;this&nbsp;socket</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-clientDisconnected"><strong>clientDisconnected</strong></a>(self, socket)</dt><dd><tt>A&nbsp;client&nbsp;has&nbsp;disconnected&nbsp;from&nbsp;the&nbsp;server&nbsp;and&nbsp;socket</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-messageReceived"><strong>messageReceived</strong></a>(self, message, socket)</dt><dd><tt>Messages&nbsp;sent&nbsp;from&nbsp;the&nbsp;phone&nbsp;are&nbsp;received&nbsp;here.<br>
+Message&nbsp;contains&nbsp;the&nbsp;id&nbsp;of&nbsp;the&nbsp;component&nbsp;which&nbsp;sent&nbsp;the&nbsp;message,&nbsp;and&nbsp;the&nbsp;message<br>
+Socket&nbsp;is&nbsp;the&nbsp;socket&nbsp;that&nbsp;the&nbsp;message&nbsp;came&nbsp;from.&nbsp;Contains&nbsp;client&nbsp;id.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a>:<br>
+<dl><dt><a name="PhoneServer-getClients"><strong>getClients</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PhoneServer-managePassword"><strong>managePassword</strong></a>(self, password, socket)</dt><dd><tt>Handle&nbsp;the&nbsp;password&nbsp;received&nbsp;from&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-onConnect"><strong>onConnect</strong></a>(self, socket)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;phone&nbsp;connects&nbsp;to&nbsp;the&nbsp;server</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-onDisconnect"><strong>onDisconnect</strong></a>(self, socket)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;phone&nbsp;disconnects&nbsp;from&nbsp;the&nbsp;server</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-onMessage"><strong>onMessage</strong></a>(self, socket, message)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;message&nbsp;is&nbsp;recieved&nbsp;from&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-onStart"><strong>onStart</strong></a>(self)</dt><dd><tt>Called&nbsp;when&nbsp;the&nbsp;server&nbsp;is&nbsp;started</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-send"><strong>send</strong></a>(self, msg)</dt><dd><tt>Used&nbsp;to&nbsp;send&nbsp;a&nbsp;message&nbsp;to&nbsp;all&nbsp;connected&nbsp;clients</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-sendToClient"><strong>sendToClient</strong></a>(self, clientId, msg)</dt></dl>
+
+<dl><dt><a name="PhoneServer-setId"><strong>setId</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;unique&nbsp;client&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-setMaxClients"><strong>setMaxClients</strong></a>(self, x)</dt><dd><tt>Used&nbsp;to&nbsp;limit&nbsp;the&nbsp;amount&nbsp;of&nbsp;clients&nbsp;that&nbsp;can&nbsp;connect&nbsp;at&nbsp;one&nbsp;time</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-setPassword"><strong>setPassword</strong></a>(self, pswd)</dt><dd><tt>Used&nbsp;to&nbsp;set&nbsp;a&nbsp;password&nbsp;for&nbsp;the&nbsp;server</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a>:<br>
+<dl><dt><strong>DISCONNECT_USER</strong> = 6234</dl>
+
+<dl><dt><strong>MESSAGE_FOR_MANAGER</strong> = 7335</dl>
+
+<dl><dt><strong>PASSWORD_FAIL</strong> = 2314</dl>
+
+<dl><dt><strong>REQUEST_PASSWORD</strong> = 9855</dl>
+
+<dl><dt><strong>SENT_DATA</strong> = 1</dl>
+
+<dl><dt><strong>SENT_PASSWORD</strong> = 0</dl>
+
+<dl><dt><strong>STORE_KEY</strong> = 5649</dl>
+
+<dl><dt><strong>clientMax</strong> = False</dl>
+
+<dl><dt><strong>clients</strong> = []</dl>
+
+<dl><dt><strong>isPassword</strong> = False</dl>
+
+<dl><dt><strong>noOfClients</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="pimote.pimoteutils.html#Server">pimote.pimoteutils.Server</a>:<br>
+<dl><dt><a name="PhoneServer-onStop"><strong>onStop</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PhoneServer-start"><strong>start</strong></a>(self, ip, port)</dt></dl>
+
+<dl><dt><a name="PhoneServer-startServer"><strong>startServer</strong></a>(self, ip, port)</dt></dl>
+
+<hr>
+Methods inherited from <a href="pimote.pimoteutils.html#Receiver">pimote.pimoteutils.Receiver</a>:<br>
+<dl><dt><a name="PhoneServer-__call__"><strong>__call__</strong></a>(self, socket)</dt><dd><tt>Called&nbsp;for&nbsp;a&nbsp;connection.</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PhoneServer-isRunning"><strong>isRunning</strong></a>(self)</dt><dd><tt>Is&nbsp;this&nbsp;receiver&nbsp;still&nbsp;running?</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-onJoin"><strong>onJoin</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PhoneServer-stop"><strong>stop</strong></a>(self)</dt><dd><tt>Stop&nbsp;this&nbsp;receiver.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ProgressBar">class <strong>ProgressBar</strong></a>(<a href="pimote.phoneutils.html#Component">Component</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;progress&nbsp;bar&nbsp;from&nbsp;0&nbsp;to&nbsp;maxValue&nbsp;which&nbsp;is&nbsp;shaded&nbsp;up&nbsp;the&nbsp;the&nbsp;current&nbsp;level&nbsp;of&nbsp;progress<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ProgressBar-__init__"><strong>__init__</strong></a>(self, maxValue)</dt></dl>
+
+<dl><dt><a name="ProgressBar-setProgress"><strong>setProgress</strong></a>(self, progress)</dt><dd><tt>Change&nbsp;that&nbsp;output&nbsp;information&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="ProgressBar-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;Output&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="ProgressBar-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="ProgressBar-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RecurringInfo">class <strong>RecurringInfo</strong></a>(<a href="pimote.phoneutils.html#Button">Button</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;recurring&nbsp;message&nbsp;is&nbsp;sent&nbsp;to&nbsp;the&nbsp;Pi&nbsp;from&nbsp;the&nbsp;phone.&nbsp;(The&nbsp;phone&nbsp;polls&nbsp;the&nbsp;pi)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#RecurringInfo">RecurringInfo</a></dd>
+<dd><a href="pimote.phoneutils.html#Button">Button</a></dd>
+<dd><a href="pimote.phoneutils.html#Component">Component</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RecurringInfo-__init__"><strong>__init__</strong></a>(self, sleepTime)</dt></dl>
+
+<dl><dt><a name="RecurringInfo-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;<a href="#Button">Button</a>&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Button">Button</a>:<br>
+<dl><dt><a name="RecurringInfo-getName"><strong>getName</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="RecurringInfo-getType"><strong>getType</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="RecurringInfo-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="RecurringInfo-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Spacer">class <strong>Spacer</strong></a>(<a href="pimote.phoneutils.html#Component">Component</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;simple&nbsp;aestetic&nbsp;component.&nbsp;Places&nbsp;a&nbsp;vertical&nbsp;space&nbsp;between&nbsp;two&nbsp;components<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Spacer-__init__"><strong>__init__</strong></a>(self, size)</dt></dl>
+
+<dl><dt><a name="Spacer-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;component&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="Spacer-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="Spacer-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ToggleButton">class <strong>ToggleButton</strong></a>(<a href="pimote.phoneutils.html#Button">Button</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;button&nbsp;that&nbsp;can&nbsp;be&nbsp;toggled&nbsp;to&nbsp;'On'&nbsp;or&nbsp;'Off'&nbsp;positions<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#ToggleButton">ToggleButton</a></dd>
+<dd><a href="pimote.phoneutils.html#Button">Button</a></dd>
+<dd><a href="pimote.phoneutils.html#Component">Component</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ToggleButton-__init__"><strong>__init__</strong></a>(self, name, initialvalue)</dt></dl>
+
+<dl><dt><a name="ToggleButton-getValue"><strong>getValue</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;toggle&nbsp;button</tt></dd></dl>
+
+<dl><dt><a name="ToggleButton-setValue"><strong>setValue</strong></a>(self, value)</dt><dd><tt>Set&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;toggle&nbsp;button</tt></dd></dl>
+
+<dl><dt><a name="ToggleButton-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;<a href="#Button">Button</a>&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Button">Button</a>:<br>
+<dl><dt><a name="ToggleButton-getName"><strong>getName</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="ToggleButton-getType"><strong>getType</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="ToggleButton-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="ToggleButton-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VideoFeed">class <strong>VideoFeed</strong></a>(<a href="pimote.phoneutils.html#Component">Component</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;video&nbsp;feed&nbsp;pulled&nbsp;from&nbsp;mjpeg-viewer<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="VideoFeed-__init__"><strong>__init__</strong></a>(self, width, height)</dt></dl>
+
+<dl><dt><a name="VideoFeed-setIp"><strong>setIp</strong></a>(self, ip)</dt><dd><tt>Set&nbsp;the&nbsp;IP&nbsp;to&nbsp;something&nbsp;different&nbsp;to&nbsp;the&nbsp;pi</tt></dd></dl>
+
+<dl><dt><a name="VideoFeed-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;the&nbsp;setup&nbsp;information&nbsp;from&nbsp;the&nbsp;pi&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>ip</strong> = '-'</dl>
+
+<dl><dt><strong>outsidefeed</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="VideoFeed-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="VideoFeed-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VoiceInput">class <strong>VoiceInput</strong></a>(<a href="pimote.phoneutils.html#Button">Button</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Allows&nbsp;the&nbsp;button&nbsp;to&nbsp;use&nbsp;their&nbsp;voice&nbsp;to&nbsp;send&nbsp;messages&nbsp;to&nbsp;the&nbsp;Pi<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#VoiceInput">VoiceInput</a></dd>
+<dd><a href="pimote.phoneutils.html#Button">Button</a></dd>
+<dd><a href="pimote.phoneutils.html#Component">Component</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="VoiceInput-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="VoiceInput-setup"><strong>setup</strong></a>(self, socket, server)</dt><dd><tt>Send&nbsp;setup&nbsp;information&nbsp;for&nbsp;this&nbsp;<a href="#Button">Button</a>&nbsp;to&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Button">Button</a>:<br>
+<dl><dt><a name="VoiceInput-getName"><strong>getName</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<dl><dt><a name="VoiceInput-getType"><strong>getType</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;this&nbsp;component</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="VoiceInput-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="VoiceInput-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
