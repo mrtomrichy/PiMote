@@ -34,7 +34,7 @@ class MyPhone(Phone):
 			o4.setText("<font color=#CC0000><b>Progress Bar</b></font>: <b>"+str(i)+"</b>%")
 		elif id == vi.getId():
 			o5.setText("<font color=#CC0000><b>Voice Input</b></font>: '" + message + "'")
-
+		
 	def sensorUpdate(self, x, y, z, clientId):
 		print(str(x)+", "+str(y)+", "+str(z)+", "+str(clientId))
 

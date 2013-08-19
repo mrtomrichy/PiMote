@@ -97,6 +97,7 @@ class Phone():
 	RECURRING_INFO = 7                                      	#Specify a recurring poll from phone to pi
 	PROGRESS_BAR   = 8                                        	#Specify a ProgressBar (ProgressBar)
 	SPACER         = 9                                          #Specify a Spacer (blank View with specified height)
+	SCROLLED_OUTPUT_TEXT = 10
 	#Setup
 	SET_CONTROL_TYPE = 0                                    	#Set the control type
 	SETUP = 1                                               	#Setup information
@@ -140,7 +141,6 @@ class Phone():
 		'''
 		pass
 		
-	#Used for setup
 	def setup(self, socket, server):
 		''' Sends all setup information to the phone from each component '''
 		self.socket = socket
@@ -207,6 +207,13 @@ class Phone():
 				self.setup(c, self.server)
 		except:
 			pass
+
+	def getClientName(self, clientId):
+		try:
+			name = self.server.getClientName(clientId)
+			return name
+		except Exception, e:
+			print("Client name not found: " + str(e))
 
 	def setTitle(self, title):
 		''' Set the title of the application to be displayed on the phone '''
@@ -344,6 +351,9 @@ class OutputText(Component):
 	def getText(self):
 		''' Get the current text being displayed '''
 		return self.message
+	def append(self, msg):
+		''' Append text to the current text '''
+		self.setText(self.getText()+msg)
 	def setTextSize(self, size):
 		self.textSize = int(size)
 	def setup(self, socket, server):
@@ -351,6 +361,15 @@ class OutputText(Component):
 		self.server = server
 		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize))
 
+class ScrolledOutputText(OutputText):
+	''' Another type of output text. This one has a max size and scrolls '''
+	def __init__(self, initialmessage, maxHeight):
+		self.type = Phone.SCROLLED_OUTPUT_TEXT
+		self.message = self.removeIllegalChars(initialmessage)
+		self.maxLines = maxLines
+	def setup(self, socket, server):
+		self.server = server
+		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize)+","+str(self.maxLines))
 
 class ProgressBar(Component):
 	''' A progress bar from 0 to maxValue which is shaded up the the current level of progress '''

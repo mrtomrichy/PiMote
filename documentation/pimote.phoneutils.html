@@ -47,7 +47,12 @@
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#OutputText">OutputText</a>
-</font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#ProgressBar">ProgressBar</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#ScrolledOutputText">ScrolledOutputText</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#ProgressBar">ProgressBar</a>
 </font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#Spacer">Spacer</a>
 </font></dt><dt><font face="helvetica, arial"><a href="pimote.phoneutils.html#VideoFeed">VideoFeed</a>
 </font></dt></dl>
@@ -187,6 +192,8 @@ Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="OutputText-__init__"><strong>__init__</strong></a>(self, initialmessage)</dt></dl>
 
+<dl><dt><a name="OutputText-append"><strong>append</strong></a>(self, msg)</dt><dd><tt>Append&nbsp;text&nbsp;to&nbsp;the&nbsp;current&nbsp;text</tt></dd></dl>
+
 <dl><dt><a name="OutputText-getText"><strong>getText</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;current&nbsp;text&nbsp;being&nbsp;displayed</tt></dd></dl>
 
 <dl><dt><a name="OutputText-setText"><strong>setText</strong></a>(self, message)</dt><dd><tt>Change&nbsp;the&nbsp;text&nbsp;displayed&nbsp;on&nbsp;the&nbsp;TextView</tt></dd></dl>
@@ -233,6 +240,8 @@ clientId&nbsp;-&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;phone&nbsp;which&nbsp;sen
 
 <dl><dt><a name="Phone-clientDisconnected"><strong>clientDisconnected</strong></a>(self, clientId)</dt><dd><tt>Override&nbsp;to&nbsp;handle&nbsp;when&nbsp;someone&nbsp;disconnects</tt></dd></dl>
 
+<dl><dt><a name="Phone-getClientName"><strong>getClientName</strong></a>(self, clientId)</dt></dl>
+
 <dl><dt><a name="Phone-getSensorValues"><strong>getSensorValues</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;current&nbsp;values&nbsp;of&nbsp;the&nbsp;accelerometer</tt></dd></dl>
 
 <dl><dt><a name="Phone-sensorUpdate"><strong>sensorUpdate</strong></a>(self, x, y, z, clientId)</dt><dd><tt>Override&nbsp;this&nbsp;to&nbsp;handle&nbsp;changes&nbsp;in&nbsp;accelerometer&nbsp;values</tt></dd></dl>
@@ -276,6 +285,8 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>RECURRING_INFO</strong> = 7</dl>
 
 <dl><dt><strong>REQUEST_OUTPUT_CHANGE</strong> = 2</dl>
+
+<dl><dt><strong>SCROLLED_OUTPUT_TEXT</strong> = 10</dl>
 
 <dl><dt><strong>SENSOR_GAME</strong> = 2</dl>
 
@@ -342,9 +353,15 @@ Socket&nbsp;is&nbsp;the&nbsp;socket&nbsp;that&nbsp;the&nbsp;message&nbsp;came&nb
 
 <hr>
 Methods inherited from <a href="pimote.pimoteutils.html#PiMoteServer">pimote.pimoteutils.PiMoteServer</a>:<br>
+<dl><dt><a name="PhoneServer-allowClientNaming"><strong>allowClientNaming</strong></a>(self)</dt><dd><tt>Allow&nbsp;the&nbsp;clients&nbsp;to&nbsp;register&nbsp;a&nbsp;username</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-getClientName"><strong>getClientName</strong></a>(self, clientId)</dt><dd><tt>Get&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;client</tt></dd></dl>
+
 <dl><dt><a name="PhoneServer-getClients"><strong>getClients</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="PhoneServer-managePassword"><strong>managePassword</strong></a>(self, password, socket)</dt><dd><tt>Handle&nbsp;the&nbsp;password&nbsp;received&nbsp;from&nbsp;the&nbsp;phone</tt></dd></dl>
+
+<dl><dt><a name="PhoneServer-manageUsername"><strong>manageUsername</strong></a>(self, username, socket)</dt><dd><tt>Handle&nbsp;the&nbsp;username&nbsp;sent&nbsp;from&nbsp;the&nbsp;phone</tt></dd></dl>
 
 <dl><dt><a name="PhoneServer-onConnect"><strong>onConnect</strong></a>(self, socket)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;phone&nbsp;connects&nbsp;to&nbsp;the&nbsp;server</tt></dd></dl>
 
@@ -356,7 +373,7 @@ Methods inherited from <a href="pimote.pimoteutils.html#PiMoteServer">pimote.pim
 
 <dl><dt><a name="PhoneServer-send"><strong>send</strong></a>(self, msg)</dt><dd><tt>Used&nbsp;to&nbsp;send&nbsp;a&nbsp;message&nbsp;to&nbsp;all&nbsp;connected&nbsp;clients</tt></dd></dl>
 
-<dl><dt><a name="PhoneServer-sendToClient"><strong>sendToClient</strong></a>(self, clientId, msg)</dt></dl>
+<dl><dt><a name="PhoneServer-sendToClient"><strong>sendToClient</strong></a>(self, clientId, msg)</dt><dd><tt>Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;an&nbsp;individual&nbsp;client</tt></dd></dl>
 
 <dl><dt><a name="PhoneServer-setId"><strong>setId</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;unique&nbsp;client&nbsp;ID</tt></dd></dl>
 
@@ -374,9 +391,13 @@ Data and other attributes inherited from <a href="pimote.pimoteutils.html#PiMote
 
 <dl><dt><strong>REQUEST_PASSWORD</strong> = 9855</dl>
 
+<dl><dt><strong>REQUEST_USERNAME</strong> = 3362</dl>
+
 <dl><dt><strong>SENT_DATA</strong> = 1</dl>
 
 <dl><dt><strong>SENT_PASSWORD</strong> = 0</dl>
+
+<dl><dt><strong>SENT_USERNAME</strong> = 2</dl>
 
 <dl><dt><strong>STORE_KEY</strong> = 5649</dl>
 
@@ -385,6 +406,8 @@ Data and other attributes inherited from <a href="pimote.pimoteutils.html#PiMote
 <dl><dt><strong>clients</strong> = []</dl>
 
 <dl><dt><strong>isPassword</strong> = False</dl>
+
+<dl><dt><strong>naming</strong> = False</dl>
 
 <dl><dt><strong>noOfClients</strong> = 0</dl>
 
@@ -461,6 +484,48 @@ Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:
 <dl><dt><a name="RecurringInfo-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
 
 <dl><dt><a name="RecurringInfo-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ScrolledOutputText">class <strong>ScrolledOutputText</strong></a>(<a href="pimote.phoneutils.html#OutputText">OutputText</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Another&nbsp;type&nbsp;of&nbsp;output&nbsp;text.&nbsp;This&nbsp;one&nbsp;has&nbsp;a&nbsp;max&nbsp;size&nbsp;and&nbsp;scrolls<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pimote.phoneutils.html#ScrolledOutputText">ScrolledOutputText</a></dd>
+<dd><a href="pimote.phoneutils.html#OutputText">OutputText</a></dd>
+<dd><a href="pimote.phoneutils.html#Component">Component</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ScrolledOutputText-__init__"><strong>__init__</strong></a>(self, initialmessage, maxHeight)</dt></dl>
+
+<dl><dt><a name="ScrolledOutputText-setup"><strong>setup</strong></a>(self, socket, server)</dt></dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#OutputText">OutputText</a>:<br>
+<dl><dt><a name="ScrolledOutputText-append"><strong>append</strong></a>(self, msg)</dt><dd><tt>Append&nbsp;text&nbsp;to&nbsp;the&nbsp;current&nbsp;text</tt></dd></dl>
+
+<dl><dt><a name="ScrolledOutputText-getText"><strong>getText</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;current&nbsp;text&nbsp;being&nbsp;displayed</tt></dd></dl>
+
+<dl><dt><a name="ScrolledOutputText-setText"><strong>setText</strong></a>(self, message)</dt><dd><tt>Change&nbsp;the&nbsp;text&nbsp;displayed&nbsp;on&nbsp;the&nbsp;TextView</tt></dd></dl>
+
+<dl><dt><a name="ScrolledOutputText-setTextSize"><strong>setTextSize</strong></a>(self, size)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="pimote.phoneutils.html#OutputText">OutputText</a>:<br>
+<dl><dt><strong>message</strong> = ''</dl>
+
+<dl><dt><strong>textSize</strong> = 16</dl>
+
+<hr>
+Methods inherited from <a href="pimote.phoneutils.html#Component">Component</a>:<br>
+<dl><dt><a name="ScrolledOutputText-getId"><strong>getId</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;components&nbsp;id</tt></dd></dl>
+
+<dl><dt><a name="ScrolledOutputText-removeIllegalChars"><strong>removeIllegalChars</strong></a>(self, string)</dt><dd><tt>Used&nbsp;to&nbsp;remove&nbsp;characters&nbsp;that&nbsp;could&nbsp;mess&nbsp;with&nbsp;the&nbsp;protocol&nbsp;messages</tt></dd></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

@@ -32,5 +32,6 @@ from .phoneutils import (
 	RecurringInfo,
   	ProgressBar,
   	Spacer,
+  	ScrolledOutputText,
   	Layout
 )

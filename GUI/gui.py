@@ -1,3 +1,8 @@
+# For people that might be reading this.. Never code like this, it's really bad. I'll fix it one day, I promise..
+
+# To run, cd into the GUI folder and type 'python gui.py'
+# Uses the native Tkinter library which comes bundled with Python.
+
 import Tkinter as tk
 import tkFileDialog
 import tkFont
@@ -185,6 +190,9 @@ def move_down(row):
 	components[row], components[row+1] = b, a
 	refresh_layout()
 
+def text(name):
+	print(name)
+
 def show_properties(comp):
 	global properties_frame
 	global properties_inner
@@ -199,33 +207,33 @@ def show_properties(comp):
 	if comp[0] == 0:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Name: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=name_entry.get()))
-		save_button.grid(row=2, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=2, column=0)
 	elif comp[0] == 1:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Name: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
 		selected = tk.BooleanVar()
 		selected_box = tk.Checkbutton(master=properties_inner, text="Initial Value", variable=selected, onvalue=True, offvalue=False)
 		selected.set(comp[3])
 		selected_box.grid(row=2, column=1)
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=name_entry.get(), initial_value=selected.get()))
-		save_button.grid(row=3, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=3, column=0)
 	elif comp[0] == 2:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Name: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=name_entry.get()))
-		save_button.grid(row=2, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=2, column=0)
 	elif comp[0] == 3:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
@@ -234,11 +242,11 @@ def show_properties(comp):
 	elif comp[0] == 4:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Time Period: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=int(name_entry.get())))
-		save_button.grid(row=2, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=2, column=0)
 	elif comp[0] == 5:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
@@ -252,11 +260,11 @@ def show_properties(comp):
 	elif comp[0] == 6:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Max Value: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=int(name_entry.get())))
-		save_button.grid(row=2, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=2, column=0)
 	elif comp[0] == 7:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
@@ -265,11 +273,11 @@ def show_properties(comp):
 	elif comp[0] == 8:
 		variable_name_label = tk.Label(master=properties_inner, text="Variable name: "+comp[1], anchor=tk.W, height=2).grid(row=0, column=0, columnspan=2, sticky=tk.N+tk.S+tk.E+tk.W)
 		name_label = tk.Label(master=properties_inner, text="Height: ").grid(row=1, column=0)
-		name_entry = tk.Entry(master=properties_inner)
+		name = tk.StringVar()
+		name.trace("w", lambda name, index, mode, sv=name: save_component(comp=comp, value=sv.get()))
+		name_entry = tk.Entry(master=properties_inner, textvariable=name)
 		name_entry.grid(row=1, column=1)
 		name_entry.insert(0, comp[2])
-		save_button = tk.Button(master=properties_inner, text="Save", command=lambda:save_component(comp=comp, value=int(name_entry.get())))
-		save_button.grid(row=2, column = 1)
 		delete_button = tk.Button(master=properties_inner, text="Delete", command=lambda:delete_component(comp=comp)).grid(row=2, column=0)
 
 def save_component(comp = None, value="", initial_value=None):
