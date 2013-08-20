@@ -315,6 +315,7 @@ def generate_program():
 	global max_entry
 	global orientation
 	global sensor_value
+	global allow_username
 
 	if len(components) == 0:
 		info_label.config(text="You have not populated the phone with components")
@@ -352,9 +353,9 @@ def generate_program():
 			my_program.write(c[1] + " = Spacer("+str(c[2])+")\nphone.add("+c[1]+")\n\n")
 
 	if orientation == 0:
-		my_program.write("phone.setOrientation(Phone.PORTRAIT)\n")
+		my_program.write("phone.setOrientation(Phone.ORIENTATION_PORTRAIT)\n")
 	else:
-		my_program.write("phone.setOrientation(Phone.LANDSCAPE)\n")
+		my_program.write("phone.setOrientation(Phone.ORIENTATION_LANDSCAPE)\n")
 
 	if sensor_value == 0:
 		my_program.write("phone.setSensor(Phone.SENSOR_OFF)\n")
@@ -365,11 +366,17 @@ def generate_program():
 	elif sensor_value == 3:
 		my_program.write("phone.setSensor(Phone.SENSOR_GAME)\n")
 
+	my_program.write("server = PhoneServer()\nserver.addPhone(phone)\n")
+
 	if max_value.get():
 		my_program.write("server.setMaxClients("+str(max_entry.get())+")\n")
 	if password_value.get():
 		my_program.write("server.setPassword('"+str(password_entry.get())+"')\n")
-	my_program.write("server = PhoneServer()\nserver.addPhone(phone)\nserver.startServer('0.0.0.0', 8090)")
+	if allow_username.get():
+		my_program.write("server.allowClientNaming()\n")
+
+	my_program.write("server.startServer('0.0.0.0', 8090)")
+	
 	proc = subprocess.Popen('pwd', stdout=subprocess.PIPE)
 	generate_text = "Generated program, saved as '"+fileName+"'.\nTo run, 'cd' into that directory and type 'python myprogram.py' into a terminal.\n"
 	generate_text += "Make sure you add your code to the 'buttonPressed()' method to handle when a button is pressed!"
@@ -398,6 +405,8 @@ def save_program():
 	global max_entry
 	global orientation
 	global sensor_value
+	global allow_username
+
 	fileName = tkFileDialog.asksaveasfilename(parent=master, defaultextension=[".pmg"], filetypes=[("PiMote File", ".pmg")], title="Save the program as...")
 	if len(fileName ) > 0:
 		file = open(fileName, "w")
@@ -405,6 +414,7 @@ def save_program():
 		file.write(str(max_value.get())+","+max_entry.get()+",\n")
 		file.write(str(orientation)+"\n")
 		file.write(str(sensor_value)+"\n")
+		file.write(str(allow_username.get())+"\n")
 		for c in components:
 			for inf in c:
 				file.write(str(inf)+",")
@@ -451,6 +461,11 @@ def open_program():
 		ori.set(orientation)
 		sensor_value = int(file.readline())
 		sensor.set(sensor_value)
+		allow_username_value = file.readline()
+		if int(allow_username_value) == 1:
+			allow_username.set(True)
+		else:
+			allow_username.set(False)
 		c = file.readline().split(",")
 		c.remove(c[len(c)-1])
 		while len(c)!=0:
@@ -538,7 +553,7 @@ properties_frame.grid(row=1, column=4, rowspan=9, sticky=tk.N+tk.S+tk.W+tk.E)
 properties_inner = tk.Frame(master=properties_frame)
 properties_inner.grid(row=0, column=0, rowspan=9, sticky=tk.N+tk.S+tk.W+tk.E)
 
-space3 = tk.Label(master=main_frame, width=6, height=3).grid(row=0, column=5)
+space3 = tk.Label(master=main_frame, width=4, height=3).grid(row=0, column=5)
 
 server_frame = tk.Frame(master=main_frame)
 server_frame.grid(row=1, column=6, sticky=tk.W+tk.E+tk.N+tk.S, rowspan=9)
@@ -577,12 +592,19 @@ sensor_normal.grid(row=11, column=1, sticky=tk.E)
 sensor_game = tk.Radiobutton(master=server_frame, text="   Game", value = 3, command=lambda:changeSensor(3), variable=sensor)
 sensor_game.grid(row=12, column=1, sticky=tk.E)
 
+allow_username = tk.BooleanVar()
+username_box = tk.Checkbutton(master=server_frame, text="Allow usernames", variable=allow_username, onvalue=True, offvalue=False)
+username_box.grid(row=13, column=1, sticky=tk.E)
+allow_username.set(False)
+
+seperator = tk.Label(master=server_frame, text="-----------------------------------").grid(row=14, column=0, columnspan=2, sticky=tk.E+tk.W)
+
 start_server = tk.Button(master=server_frame, text="Generate Program", command=generate_program)
-start_server.grid(row=13, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
+start_server.grid(row=15, column=1, sticky=tk.N+tk.S+tk.W+tk.E)
 # stop_server = tk.Button(master, text="Stop server", state="disabled")
 # stop_server.grid(row=2, column=6, sticky=tk.N+tk.S+tk.W+tk.E)
 
-space4 = tk.Label(master=main_frame, width=6, height=3).grid(row=0, column=8)
+space4 = tk.Label(master=main_frame, width=3, height=3).grid(row=0, column=8)
 
 master.config(menu=menubar)
 tk.mainloop()
