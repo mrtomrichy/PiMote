@@ -226,7 +226,7 @@ class Phone():
 		''' Override to handle when someone disconnects '''
 		pass
 	
-# BROKEN
+# NEEDS DOING
 
 class GridPhone():
 	''' 
@@ -366,10 +366,11 @@ class ScrolledOutputText(OutputText):
 	def __init__(self, initialmessage, maxHeight):
 		self.type = Phone.SCROLLED_OUTPUT_TEXT
 		self.message = self.removeIllegalChars(initialmessage)
-		self.maxLines = maxLines
+		self.maxHeight = maxHeight
 	def setup(self, socket, server):
+		''' Send setip information for this Output to the phone '''
 		self.server = server
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize)+","+str(self.maxLines))
+		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize)+","+str(self.maxHeight))
 
 class ProgressBar(Component):
 	''' A progress bar from 0 to maxValue which is shaded up the the current level of progress '''

@@ -285,7 +285,6 @@ class PiMoteServer(Server):
 
   def onConnect(self, socket):
     ''' Called when a phone connects to the server '''
-    print("Client connected")
     self.noOfClients+=1                                               #Counting clients
     socket.id = self.setId()
     if self.clientMax:
@@ -302,7 +301,6 @@ class PiMoteServer(Server):
 
   def onDisconnect(self, socket):
     ''' Called when a phone disconnects from the server '''
-    print("Client disconnected")
     self.noOfClients-=1                                               #tracking clients
     self.clientDisconnected(socket)
     for client in self.clients:
@@ -347,6 +345,7 @@ class PiMoteServer(Server):
     if self.isPassword:
       socket.send(str(PiMoteServer.REQUEST_PASSWORD))
     else:                                                             #otherwise setup
+      socket.id = self.setId()
       self.clients.append(socket)
       self.clientConnected(socket)
 
