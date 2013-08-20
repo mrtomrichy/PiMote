@@ -24,7 +24,7 @@ PiMote allows you to easily use your Android phone as a remote control for your 
 For video streaming, install: https://github.com/codewithpassion/mjpg-streamer
 
 
-API Documentation - https://docs.google.com/a/ajrmail.co.uk/document/d/1WgJT5AwKpGRbcP-Borukpo133kLKAV2wvFC3OYhCLmA
+API Documentation - https://github.com/mrtomrichy/PiMote/tree/master/documentation
 
 PiMote Documentation - https://docs.google.com/a/ajrmail.co.uk/document/d/1jAqKqZZSXGzYnEPWiZYLmbj2TLfBOzyN2ZDIl92SahE
 

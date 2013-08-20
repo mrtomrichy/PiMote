@@ -364,7 +364,7 @@ def generate_program():
 	elif sensor_value == 2:
 		my_program.write("phone.setSensor(Phone.SENSOR_NORMAL)\n")
 	elif sensor_value == 3:
-		my_program.write("phone.setSensor(Phone.SENSOR_GAME)\n")
+		my_program.write("phone.setSensor(Phone.SENSOR_GAME)\n\n")
 
 	my_program.write("server = PhoneServer()\nserver.addPhone(phone)\n")
 
@@ -581,7 +581,7 @@ orient_landscape = tk.Radiobutton(master=server_frame, text="Landscape", value=1
 orient_landscape.grid(row=8, column=1, sticky=tk.E)
 ori.set(0)
 
-sensor_label = tk.Label(master=server_frame, text="Accelerometer poll rate:").grid(row=9, column=0)
+sensor_label = tk.Label(master=server_frame, text="Accelerometer:").grid(row=9, column=0)
 sensor = tk.IntVar()
 sensor_off = tk.Radiobutton(master=server_frame, text="       Off", value = 0, command=lambda:changeSensor(0), variable=sensor)
 sensor_off.grid(row=9, column=1, sticky=tk.E)
