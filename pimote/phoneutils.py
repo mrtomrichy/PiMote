@@ -14,43 +14,41 @@ class PhoneServer(PiMoteServer):
 
 	def addPhone(self, thephone): 
 		''' Store the phone object for reference '''
-		self.phone = thephone
+		self.thephone = thephone
 
-	def messageReceived(self, message, socket):
+	def messageReceived(self, message, phone):
 		'''
 		Messages sent from the phone are received here.
 		Message contains the id of the component which sent the message, and the message
-		Socket is the socket that the message came from. Contains client id.
+		phone is the phone that the message came from. Contains client id.
 		'''
-		if isinstance(self.phone, Phone):                     		#Regular phone
+		if isinstance(self.thephone, Phone):                     	#Regular phone
 			(id, sep, msg) = message.strip().partition(",")     	#Strip component ID and message apart
-			self.phone.updateButtons(int(id), msg, self)        	#Update buttons if needed
+			self.thephone.updateButtons(int(id), msg, self)        	#Update buttons if needed
 			if int(id) == 8827:
-				self.phone.updateSensors(msg, socket.id)
+				self.thephone.updateSensors(msg, phone.id)
 			else:
 				try:
-					self.phone.buttonPressed(int(id), msg, socket.id) 	#Allow the user to handle the message + client
+					self.thephone.buttonPressed(int(id), msg, phone.id) 	#Allow the user to handle the message + client
 				except Exception, e:
 					print("Problem in buttonPressed() override: " + str(e))
 					self.stop()
 					print("Server killed, press enter.")
-		elif isinstance(self.phone, ControllerPhone):         		#Controller
-			self.phone.controlPress(message)                   		#Controller handler
 
-	def clientConnected(self, socket):
-		''' A client has connected to the server on this socket '''
-		self.phone.setup(socket, self)                        		#Send them setup information
+	def clientConnected(self, phone):
+		''' A client has connected to the server on this phone '''
+		self.thephone.setup(phone, self)                        		#Send them setup information
 		try:
-			self.phone.clientConnected(socket.id)
+			self.thephone.clientConnected(phone.id)
 		except Exception, e:
 			print("Problem in clientConnected() override: " + str(e))
 			self.stop()
 			print("Server killed, press enter.")
 
-	def clientDisconnected(self, socket):
-		''' A client has disconnected from the server and socket '''
+	def clientDisconnected(self, phone):
+		''' A client has disconnected from the server and phone '''
 		try:
-			self.phone.clientDisconnected(socket.id)
+			self.thephone.clientDisconnected(phone.id)
 		except Exception, e:
 			print("Problem in clientDisconnected() override: " + str(e))
 			self.stop()
@@ -58,7 +56,7 @@ class PhoneServer(PiMoteServer):
 
 
 
-''' ################------PHONE TYPES--------##################'''
+''' ################------PHONE--------##################'''
 
 class Phone():
 	''' 
@@ -98,11 +96,7 @@ class Phone():
 	PROGRESS_BAR   = 8                                        	#Specify a ProgressBar (ProgressBar)
 	SPACER         = 9                                          #Specify a Spacer (blank View with specified height)
 	SCROLLED_OUTPUT_TEXT = 10
-	#Setup
-	SET_CONTROL_TYPE = 0                                    	#Set the control type
-	SETUP = 1                                               	#Setup information
-	#Data being sent
-	REQUEST_OUTPUT_CHANGE = 2                               	#Request a change to an output component
+
 
 
 	def add(self, component):
@@ -112,6 +106,7 @@ class Phone():
 			self.components.append(component)
 		else:
 			print("Not a Component.")
+
 	def setId(self):
 		''' Generates a unique component ID '''
 		id=0
@@ -123,6 +118,7 @@ class Phone():
 			else:
 				x+=1
 		return id
+
 	def setView(self, layout):
 		''' The phone will output the components from the passed in Layout '''
 		if isinstance(layout, Layout):
@@ -141,13 +137,17 @@ class Phone():
 		'''
 		pass
 		
-	def setup(self, socket, server):
-		''' Sends all setup information to the phone from each component '''
-		self.socket = socket
+	def setup(self, phone, server):
+		''' Sends all setup information to the phone '''
+		self.phone = phone
 		self.server = server
-		socket.send(str(Phone.SET_CONTROL_TYPE)+","+str(self.controltype)+","+self.name+","+str(socket.id)+","+str(self.sensorvalue)+","+str(self.orientation))
+		phone.setControl(str(self.controltype)+","+self.name+","+str(phone.id)+","+str(self.sensorvalue)+","+str(self.orientation))
+		self.setupComponents(phone, server)
+
+	def setupComponents(self, phone, server):
+		''' Prompts each component to send its setup information '''
 		for c in self.components:
-			c.setup(socket, server) #setup each component
+			c.setup(phone, server) #setup each component		
 
 	def setSensor(self, value):
 		''' Turns the sensor on or off, and sets the speed it sends messages at '''
@@ -171,7 +171,7 @@ class Phone():
 		''' Updates button state if necessary and sends to all phones '''
 		for c in self.components:
 			if isinstance(c, ToggleButton) and c.id == id:
-				server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.REQUEST_OUTPUT_CHANGE)+","+str(Phone.INPUT_TOGGLE)+","+str(id)+","+str(message))
+				server.changeOutputForAll(str(Phone.INPUT_TOGGLE)+","+str(id)+","+str(message))
 				if int(message) == 1:
 					c.value = True
 				else:
@@ -202,18 +202,19 @@ class Phone():
 	def updateDisplay(self):
 		''' Clear the display and repopulate with components[] '''
 		try:
-			self.server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(Phone.CLEAR_ALL))
+			self.server.setupAll(str(Phone.CLEAR_ALL))
 			for c in self.server.getClients():
 				self.setup(c, self.server)
 		except:
 			pass
 
 	def getClientName(self, clientId):
+		''' Returns the registered name of the client '''
 		try:
 			name = self.server.getClientName(clientId)
 			return name
 		except Exception, e:
-			print("Client name not found: " + str(e))
+			print("Client name not found: " + str(e)+".\nEnsure you allowClientNaming()")
 
 	def setTitle(self, title):
 		''' Set the title of the application to be displayed on the phone '''
@@ -236,11 +237,11 @@ class GridPhone():
 	'''
 	controltype = 1
 
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Used for communication and setup with device '''
-		self.socket = socket
+		self.phone = phone
 		self.server = server
-		socket.send(str(Phone.SET_CONTROL_TYPE)+","+str(self.controltype))
+		phone.setControl(str(self.controltype))
 
 
 
@@ -250,10 +251,10 @@ class GridPhone():
 
 class Component():
 	''' An object of type Component can be added to the phone screen '''
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' 
 		Send the setup information to the phone. 
-		Also used to store the server and socket variables 
+		Also used to store the server and phone variables 
 		'''
 		pass
 	def getId(self): 
@@ -278,9 +279,9 @@ class Button(Component):
 	def getType(self):
 		''' Return the type of this component '''
 		return self.type
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Button to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type) + "," + str(self.id) + "," + str(self.name))
+		phone.setup(str(self.type) + "," + str(self.id) + "," + str(self.name))
 
 
 class InputText(Button):
@@ -288,9 +289,9 @@ class InputText(Button):
 	def __init__(self, name):
 		self.name = self.removeIllegalChars(name)
 		self.type = Phone.INPUT_TEXT
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Button to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type) + "," + str(self.id) + "," + str(self.name))
+		phone.setup(str(self.type) + "," + str(self.id) + "," + str(self.name))
 
 
 class ToggleButton(Button):
@@ -305,12 +306,12 @@ class ToggleButton(Button):
 	def setValue(self, value):
 		''' Set the value of the toggle button '''
 		self.value = value
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Button to the phone '''
 		tf = 0
 		if self.value == True:
 			tf=1
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type) + "," + str(self.id) + "," + str(self.name) + "," + str(tf))
+		phone.setup(str(self.type) + "," + str(self.id) + "," + str(self.name) + "," + str(tf))
 		del tf
 
 
@@ -318,9 +319,9 @@ class VoiceInput(Button):
 	''' Allows the button to use their voice to send messages to the Pi '''
 	def __init__(self):
 		self.type = Phone.VOICE_INPUT
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Button to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id))
+		phone.setup(str(self.type)+","+str(self.id))
 
 
 class RecurringInfo(Button):
@@ -328,9 +329,9 @@ class RecurringInfo(Button):
 	def __init__(self, sleepTime):
 		self.type = Phone.RECURRING_INFO
 		self.sleepTime = int(sleepTime)
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Button to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.sleepTime))
+		phone.setup(str(self.type)+","+str(self.id)+","+str(self.sleepTime))
 
 
 
@@ -345,7 +346,7 @@ class OutputText(Component):
 		''' Change the text displayed on the TextView '''
 		self.message = self.removeIllegalChars(message)
 		try:
-			self.server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.REQUEST_OUTPUT_CHANGE)+","+str(self.type)+","+str(self.id)+","+str(self.message))
+			self.server.changeOutputForAll(str(self.type)+","+str(self.id)+","+str(self.message))
 		except:
 			pass
 	def getText(self):
@@ -356,10 +357,10 @@ class OutputText(Component):
 		self.setText(self.getText()+msg)
 	def setTextSize(self, size):
 		self.textSize = int(size)
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Output to the phone '''
 		self.server = server
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize))
+		phone.setup(str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize))
 
 class ScrolledOutputText(OutputText):
 	''' Another type of output text. This one has a max size and scrolls '''
@@ -367,24 +368,24 @@ class ScrolledOutputText(OutputText):
 		self.type = Phone.SCROLLED_OUTPUT_TEXT
 		self.message = self.removeIllegalChars(initialmessage)
 		self.maxHeight = maxHeight
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setip information for this Output to the phone '''
 		self.server = server
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize)+","+str(self.maxHeight))
+		phone.setup(str(self.type)+","+str(self.id)+","+str(self.message)+","+str(self.textSize)+","+str(self.maxHeight))
 
 class ProgressBar(Component):
 	''' A progress bar from 0 to maxValue which is shaded up the the current level of progress '''
 	def __init__(self, maxValue):
 		self.maxValue = int(maxValue)
 		self.type = Phone.PROGRESS_BAR
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this Output to the phone '''
 		self.server = server
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.id)+","+str(self.maxValue))
+		phone.setup(str(self.type)+","+str(self.id)+","+str(self.maxValue))
 	def setProgress(self, progress):
 		''' Change that output information of this component '''
 		if int(progress) <= self.maxValue:
-			self.server.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.REQUEST_OUTPUT_CHANGE)+","+str(self.type)+","+str(self.id)+","+str(progress))
+			self.server.changeOutputForAll(str(self.type)+","+str(self.id)+","+str(progress))
 		else:
 			print("Cannot set progress to higher than the max value specified")
 
@@ -401,9 +402,9 @@ class VideoFeed(Component):
 		''' Set the IP to something different to the pi '''
 		self.ip = ip
 		self.outsidefeed = 1
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send the setup information from the pi to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.width)+","+str(self.height)+","+str(self.outsidefeed)+","+self.ip)
+		phone.setup(str(self.type)+","+str(self.width)+","+str(self.height)+","+str(self.outsidefeed)+","+self.ip)
 
 
 class Spacer(Component):
@@ -411,9 +412,9 @@ class Spacer(Component):
 	def __init__(self, size):
 		self.size = int(size)
 		self.type = Phone.SPACER
-	def setup(self, socket, server):
+	def setup(self, phone, server):
 		''' Send setup information for this component to the phone '''
-		socket.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Phone.SETUP)+","+str(self.type)+","+str(self.size))
+		phone.setup(str(self.type)+","+str(self.size))
 
 
 class Layout():

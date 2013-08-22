@@ -19,14 +19,30 @@ class Socket():
   """
   Mutable wrapper class for sockets.
   """
+  SET_CONTROL_TYPE = 0                                      #Set the control type
+  SETUP = 1                                                 #Setup information
+  #Data being sent
+  REQUEST_OUTPUT_CHANGE = 2                                 #Request a change to an output component
 
   def __init__(self, socket):
     # Store internal socket pointer
     self._socket = socket
   
   def send(self, msg):
+    ''' Send a message to the phone '''
     # Ensure a single new-line after the message
     self._socket.send("%s\n" % msg.strip())
+  def setControl(self, msg):
+    ''' Set the control type of the phone '''
+    self.send(str(Socket.SET_CONTROL_TYPE)+","+str(msg))
+
+  def setup(self, msg):
+    ''' Send setup information to the phone '''
+    self.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Socket.SETUP)+","+str(msg))
+
+  def changeOutput(self, msg):
+    ''' Request output change on the phone '''
+    self.send(str(PiMoteServer.MESSAGE_FOR_MANAGER)+","+str(Socket.REQUEST_OUTPUT_CHANGE)+","+str(msg))
     
   def close(self):
     self._socket.close()
@@ -369,6 +385,14 @@ class PiMoteServer(Server):
     ''' Used to send a message to all connected clients '''
     for client in self.getClients():
       client.send(msg)
+
+  def changeOutputForAll(self, msg):
+    for client in self.getClients():
+      client.changeOutput(msg)
+
+  def setupAll(self, msg):
+    for client in self.getClients():
+      client.setup(msg)
 
   def sendToClient(self, clientId, msg):
     ''' Sends a message to an individual client '''
