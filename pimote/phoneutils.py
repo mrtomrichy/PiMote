@@ -119,6 +119,19 @@ class Phone():
 				x+=1
 		return id
 
+	def clearComponents(self):
+		''' Clear all the components from the components array '''
+		self.components = []
+
+	def updateDisplay(self):
+		''' Clear the display and repopulate with components[] '''
+		try:
+			self.server.setupAll(str(Phone.CLEAR_ALL))
+			for c in self.server.getClients():
+				self.setup(c, self.server)
+		except:
+			pass
+
 	def setView(self, layout):
 		''' The phone will output the components from the passed in Layout '''
 		if isinstance(layout, Layout):
@@ -128,14 +141,6 @@ class Phone():
 		else:
 			print("Not a valid Layout")
 
-	def buttonPressed(self, id, msg, clientId):
-		''' 
-		Override this to handle the button presses. 
-		ID - ID of the component that sent the message.
-		msg - The message that was sent by that component.
-		clientId - The ID of the phone which sent the message.
-		'''
-		pass
 		
 	def setup(self, phone, server):
 		''' Sends all setup information to the phone '''
@@ -148,17 +153,6 @@ class Phone():
 		''' Prompts each component to send its setup information '''
 		for c in self.components:
 			c.setup(phone, server) #setup each component		
-
-	def setSensor(self, value):
-		''' Turns the sensor on or off, and sets the speed it sends messages at '''
-		if value == 0 or value == 1 or value == 2 or value == 3:
-			self.sensorvalue = value
-		else:
-			print("Sensor value not valid: must be Phone.SENSOR_OFF, Phone.SENSOR_SLOW, Phone.SENSOR_GAME or Phone.SENSOR_NORMAL.\nSetting to default off")
-
-	def getSensorValues(self):
-		''' Returns the current values of the accelerometer '''
-		return [self.sensorX, self.sensorY]
 
 	def setOrientation(self, value):
 		''' Set the orientation of the phone '''
@@ -191,22 +185,17 @@ class Phone():
 			self.server.stop()
 			print("Server killed, press enter.")
 
-	def sensorUpdate(self, x, y, z, clientId):
-		''' Override this to handle changes in accelerometer values '''
-		pass
+	def setSensor(self, value):
+		''' Turns the sensor on or off, and sets the speed it sends messages at '''
+		if value == 0 or value == 1 or value == 2 or value == 3:
+			self.sensorvalue = value
+		else:
+			print("Sensor value not valid: must be Phone.SENSOR_OFF, Phone.SENSOR_SLOW, Phone.SENSOR_GAME or Phone.SENSOR_NORMAL.\nSetting to default off")
 
-	def clearComponents(self):
-		''' Clear all the components from the components array '''
-		self.components = []
-
-	def updateDisplay(self):
-		''' Clear the display and repopulate with components[] '''
-		try:
-			self.server.setupAll(str(Phone.CLEAR_ALL))
-			for c in self.server.getClients():
-				self.setup(c, self.server)
-		except:
-			pass
+	def getSensorValues(self):
+		''' Returns the current values of the accelerometer '''
+		return [self.sensorX, self.sensorY]
+	
 
 	def getClientName(self, clientId):
 		''' Returns the registered name of the client '''
@@ -220,6 +209,21 @@ class Phone():
 		''' Set the title of the application to be displayed on the phone '''
 		self.name = str(title)
 
+	# --------------------OVERRIDES-------------------------
+
+	def buttonPressed(self, id, msg, clientId):
+		''' 
+		Override this to handle the button presses. 
+		ID - ID of the component that sent the message.
+		msg - The message that was sent by that component.
+		clientId - The ID of the phone which sent the message.
+		'''
+		pass
+
+	def sensorUpdate(self, x, y, z, clientId):
+		''' Override this to handle changes in accelerometer values '''
+		pass
+
 	def clientConnected(self, clientId):
 		''' Override to handle when someone connects '''
 		pass
@@ -227,24 +231,6 @@ class Phone():
 		''' Override to handle when someone disconnects '''
 		pass
 	
-# NEEDS DOING
-
-class GridPhone():
-	''' 
-	GridPhone is an example of a custom made phone (this code) and manager (see Android code) 
-	Creates a grid with touchable areas.
-	Not working yet.
-	'''
-	controltype = 1
-
-	def setup(self, phone, server):
-		''' Used for communication and setup with device '''
-		self.phone = phone
-		self.server = server
-		phone.setControl(str(self.controltype))
-
-
-
 
 
 ''' ####################----COMPONENTS----###################### '''

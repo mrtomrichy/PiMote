@@ -23,7 +23,7 @@ class MyPhone(Phone):
 		#########----------------------------------------------###########
 		if id == b1.getId():
 			self.buttonPress+=1
-			o1.setText("<font color=#CC0000><b>Regular Button</b></font>: you have pressed it " + str(self.buttonPress) + " times")
+			o1.setText("<font color=#CC0000><b>Regular Button</b></font>: it has been pressed " + str(self.buttonPress) + " times")
 		elif id == b2.getId():
 			o2.setText("<font color=#CC0000><b>Toggle Button</b></font>: " + message)
 		elif id == b3.getId():
@@ -43,7 +43,7 @@ thisphone = MyPhone()
 thisphone.setTitle("Example PiMote App")
 
 p = ProgressBar(100)
-b1 = Button("Get Readings") #Regular button
+b1 = Button("Press me!") #Regular button
 b2 = ToggleButton("This is a toggle button", True) #Toggle
 b3 = InputText("Input text here") #Text Input
 title = OutputText("<font color=#35B5E5><b>Test Application</b></font>")

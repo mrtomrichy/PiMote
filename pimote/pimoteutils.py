@@ -21,7 +21,6 @@ class Socket():
   """
   SET_CONTROL_TYPE = 0                                      #Set the control type
   SETUP = 1                                                 #Setup information
-  #Data being sent
   REQUEST_OUTPUT_CHANGE = 2                                 #Request a change to an output component
 
   def __init__(self, socket):
@@ -189,48 +188,6 @@ class Server(Receiver):
 
   def onStop(self):
     pass
-
-class Client(Receiver):
-  
-  def start(self, ip, port):
-    # Set up server socket
-    self._socket = socketlib.socket(socketlib.AF_INET, socketlib.SOCK_STREAM)
-    self._socket.settimeout(1)
-    self._socket.connect((ip, int(port)))
-
-    # On start!
-    self.onStart()
-
-    # Start listening for incoming messages
-    self._thread = threading.Thread(target = self, args = (self._socket,))
-    self._thread.start()
-    
-  def send(self, message):
-    # Send message to server
-    self._lock.acquire()
-    self._socket.send("%s\n" % message.strip())
-    self._lock.release()
-    time.sleep(0.5)
-
-  def stop(self):
-    # Stop event loop
-    Receiver.stop(self)
-    print("Stopping")
-    # Join thread
-    if self._thread != threading.currentThread():
-      self._thread.join()
-    
-    # On stop!
-    self.onStop()   
-
-  def onStart(self):
-    pass
-
-  def onStop(self):
-    pass
-    
-  def onJoin(self):
-    self.stop()
 
 
 # The following was added by Tom Richardson - 02/07/2013
@@ -410,6 +367,50 @@ class PiMoteServer(Server):
     ''' Override to handle when a client disconnects '''
     pass
 
+
+# ------------------------- CLIENT STUFF, UNNEEDED ----------------------------- #
+
+class Client(Receiver):
+  
+  def start(self, ip, port):
+    # Set up server socket
+    self._socket = socketlib.socket(socketlib.AF_INET, socketlib.SOCK_STREAM)
+    self._socket.settimeout(1)
+    self._socket.connect((ip, int(port)))
+
+    # On start!
+    self.onStart()
+
+    # Start listening for incoming messages
+    self._thread = threading.Thread(target = self, args = (self._socket,))
+    self._thread.start()
+    
+  def send(self, message):
+    # Send message to server
+    self._lock.acquire()
+    self._socket.send("%s\n" % message.strip())
+    self._lock.release()
+    time.sleep(0.5)
+
+  def stop(self):
+    # Stop event loop
+    Receiver.stop(self)
+    print("Stopping")
+    # Join thread
+    if self._thread != threading.currentThread():
+      self._thread.join()
+    
+    # On stop!
+    self.onStop()   
+
+  def onStart(self):
+    pass
+
+  def onStop(self):
+    pass
+    
+  def onJoin(self):
+    self.stop()
 
 #Unfinished (low priority)
 class PiMoteClient(Client):
