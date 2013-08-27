@@ -46,7 +46,7 @@ class MyPhone(Phone):
 # Create the phone object
 thisphone = MyPhone()
 thisphone.setTitle("Lights!")
-title = OutputText("<b>Tilt the phone to make different lights glow!</b>")
+title = OutputText("<b>Tilt the phone to make different lights <font color=red>glow</font>!</b>")
 
 #Add the buttons to the phone
 thisphone.add(title)

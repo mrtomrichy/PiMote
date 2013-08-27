@@ -31,8 +31,8 @@ input = InputText("Input text here")                                        # Te
 output = ScrolledOutputText("<font color=red>Messages:</font>", 500)        # Text Output
 
 #Add the buttons to the phone
-thisphone.add(o)
-thisphone.add(b3)
+thisphone.add(output)
+thisphone.add(input)
 
 thisphone.setOrientation(Phone.ORIENTATION_PORTRAIT)                        # Portrait oritentation
 

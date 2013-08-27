@@ -1,5 +1,5 @@
 '''
-	A Python version of the Simon Game using the PiFace and pimote
+	A Python version of the 'Simon Game' using the PiFace and pimote
 	Written by Tom Richardson 2013
 	To run, type 'python simonsgame.py'. 
 		It will run on the local IP of the Pi on port 8090
